@@ -1,0 +1,23 @@
+# Exclude pattern for Docker context
+**/.aptcache
+**/.apkcache
+**/.ccache
+**/.dcache
+**/.gocache
+**/.phpcache
+**/.pycache
+**/.config**
+**/.context
+**/data/**
+**/.vscode
+**/.idea
+**/.DS_store
+**/node_modules
+**/*.org
+**/*.swp
+
+# Exclude pattern only in .dockerignore
+**/.editorconfig
+**/.gitkeep
+
+# Include pattern only in .dockerignore

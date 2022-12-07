@@ -1,0 +1,225 @@
+#!/usr/bin/env bash
+
+#
+# Public: check_prereq() function for checking essential prerequisites
+#
+function libgrav_common::check_prereq() { #-# Public: check_prereq() function for checking essential prerequisites
+   # Minimal requirements
+   local _UUID_MIN="${1}"
+   local _DOCKER_MIN="${2}"
+   local _BUILDX_MIN="${3}"
+   local _JQ_MIN="${4}"
+   local _OPENSSL_MIN="${5}"
+   local _GIT_MIN="${6}"
+   local _GETSSL_MIN="${7}"
+   local _WGET_MIN="${8}"
+
+   local _UUID_NOW="$(uuid ${_UUID_MIN} >/dev/null && echo "-v4")"
+   local _OS_NOW="$(libgrav_common::os_type)"
+   local _ARCH_NOW="$(libgrav_common::machine_arch)"
+   local _DOCKER_NOW="$(docker info --format '{{json .ServerVersion}}' | tr -d '"')"
+   local _BUILDX_NOW="$(docker info --format '{{json .ClientInfo}}' | jq -r '.Plugins[] | select(.Name | contains("buildx")) | .Version ' | cut -d'v' -f2)"
+   local _JQ_NOW="$(jq --version | cut -d'-' -f2)"
+   local _OPENSSL_NOW="$(openssl version |  awk '{print $2}' | tr -dc '0-9.')"
+   local _GIT_NOW="$(git --version | awk '{print $3}')"
+   local _GETSSL_NOW="$(getssl | head -n 1 | awk '{print $3}')"
+   local _WGET_NOW="$(wget --version | head -n 1 | awk '{print $3}')"
+
+   # Important for multi architecture detection
+   local _DISTRO_NOW="$(cat /etc/*release 2>/dev/null | grep -w ID | cut -d'=' -f2)"
+
+   # Check all required minimal versions
+   if [ "${_UUID_MIN}" != "${_UUID_NOW}" ]; then
+      libgrav_common::error 2 "Error: Required version of uuid is not available or met.\nPlease install at least required version: ${_UUID_MIN}." "${NAME}"
+   elif [ $(libgrav_common::version "${_DOCKER_NOW}") -lt $(libgrav_common::version ${_DOCKER_MIN}) ]; then 
+      libgrav_common::error 2 "Error: Required version of docker is not available or met.\nPlease install at least required version: ${_DOCKER_MIN}." "${NAME}"
+   elif [ $(libgrav_common::version "${_BUILDX_NOW}") -lt $(libgrav_common::version ${_BUILDX_MIN}) ]; then 
+      libgrav_common::error 2 "Error: Required version of docker buildx plugin is not available or met.\nPlease install at least required version: (${_BUILDX_MIN}." "${NAME}"
+   elif [ $(libgrav_common::version "${_JQ_NOW}") -lt $(libgrav_common::version ${_JQ_MIN}) ]; then 
+      libgrav_common::error 2 "Error: Required version of jq is not available or met.\nPlease install at least required version: ${_JQ_MIN}." "${NAME}"
+   elif [ $(libgrav_common::version "${_OPENSSL_NOW}") -lt $(libgrav_common::version ${_OPENSSL_MIN}) ]; then 
+      libgrav_common::error 2 "Error: Required version of openssl is not available or met.\nPlease install at least required version: ${_OPENSSL_MIN}." "${NAME}"
+   elif [ $(libgrav_common::version "${_GIT_NOW}") -lt $(libgrav_common::version ${_GIT_MIN}) ]; then 
+      libgrav_common::error 2 "Error: Required version of git is not available or met.\nPlease install at least required version: ${_GIT_MIN}." "${NAME}"
+   elif [ $(libgrav_common::version "${_GETSSL_NOW}") -lt $(libgrav_common::version ${_GETSSL_MIN}) ]; then 
+      libgrav_common::error 2 "Error: Required version of getssl is not available or met.\nPlease install at least required version: ${_GETSSL_MIN}." "${NAME}"
+   elif [ $(libgrav_common::version "${_WGET_NOW}") -lt $(libgrav_common::version ${_WGET_MIN}) ]; then 
+      libgrav_common::error 2 "Error: Required version of getssl is not available or met.\nPlease install at least required version: ${_WGET_MIN}." "${NAME}"
+   fi
+
+   # Set global directory variables
+   echo "GRAV_OS=\"${_OS_NOW}\"" > "${CFG_DIR}"/.config.os
+   echo "GRAV_ARCH=\"${_ARCH_NOW}\"" > "${CFG_DIR}"/.config.arch
+   echo "GRAV_DISTRO=\"${_DISTRO_NOW}\"" > "${CFG_DIR}"/.config.distro
+}
+
+#
+# Public: error() function for all shell scripts.
+#
+function libgrav_common::error() { #-# Public: error() function for all shell scripts.
+   local _RC=${1}
+   local _MESG="${2}"
+   local _NAME="${3:-""}"
+
+   local _TEXT="${_NAME}: ${_MESG}"
+
+   if [[ -z "${_NAME}" ]]; then _TEXT="${_MESG}"; fi   
+
+   case ${_RC}  in
+      *)
+         echo ""
+         echo -e ${_TEXT}
+      ;;
+   
+   esac
+   
+   exit ${_RC}
+}
+
+#
+# Public: init() function for setting all directory variables globally.
+#
+function libgrav_common::init() { #-# Public: init() function for setting all directory variables globally.
+#
+   # Remove enclosing double quotes
+   if [[ -e "${CTX_DIR}/.config.root" ]]; then ROOT_DIR="$(cat ${CTX_DIR}/.config.root | tr -d '"' | cut -d'=' -f2)"; fi
+   if [[ -e "${CTX_DIR}/.config.cache" ]]; then CACHE_DIR="$(cat ${CTX_DIR}/.config.cache | tr -d '"' | cut -d'=' -f2)"; fi
+   if [[ -e "${CTX_DIR}/.config.data" ]]; then DATA_DIR="$(cat ${CTX_DIR}/.config.data | tr -d '"' | cut -d'=' -f2)"; fi
+   if [[ -e "${CTX_DIR}/.config.docker" ]]; then DOCK_DIR="$(cat ${CTX_DIR}/.config.docker | tr -d '"' | cut -d'=' -f2)"; fi
+   if [[ -e "${CTX_DIR}/.config.bin" ]]; then BIN_DIR="$(cat ${CTX_DIR}/.config.bin | tr -d '"' | cut -d'=' -f2)"; fi
+   if [[ -e "${CTX_DIR}/.config.cfg" ]]; then CFG_DIR="$(cat ${CTX_DIR}/.config.cfg | tr -d '"' | cut -d'=' -f2)"; fi
+   if [[ -e "${CTX_DIR}/.config.key" ]]; then KEY_DIR="$(cat ${CTX_DIR}/.config.key | tr -d '"' | cut -d'=' -f2)"; fi
+}
+
+#
+# Public: help() function for all shell scripts.
+#
+function libgrav_common::help() { #-# Public: help() function for all shell scripts.
+   local _HELP="${1}"
+   local _NAME="${2:-""}"
+   local _NL="${3:-"no"}"
+   
+   local _TEXT="${_NAME}: ${_HELP}"
+
+   if [[ -z "${_NAME}" ]]; then _TEXT="${_HELP}"; fi
+
+   if [ "${_NL}" == "yes" ]; then echo ""; fi
+   echo -e "${_TEXT}"
+   if [ "${_NL}" == "yes" ]; then echo ""; fi
+}
+
+#
+# Public: machine_arch() return the new machine architecture string
+#
+function libgrav_common::machine_arch() { #-# Public: machine_arch() return the new machine architecture string
+   local _ARCH=""
+
+   case "$(uname -m)" in
+       "x86_64") _ARCH="amd64"; ;;
+      "aarch64") _ARCH="arm64"; ;;
+              *) _ARCH="unknown"; ;;
+   esac
+
+   echo ${_ARCH} | tr '[:upper:]' '[:lower:]'
+}
+
+#
+# Public: multi_choice() user input function.
+#
+function libgrav_common::multi_choice() { #-# Public: multi_choice() user input function.
+   local _TYPE=${1:-2} # Default two choices
+   local _TEXT="${2:-""}"
+
+   local _RC=1
+   local _INFO=""
+
+   for (( idx=1; idx<=${_TYPE}; idx++ )); do  
+      local _OK${idx}="ok"
+      local _INFO="${_INFO}${idx}/"
+   done
+   
+   while true; do
+      read -p "${_TEXT} (${_INFO:0:-1})? " _ANSWER
+      
+      if [ $? -ge 128 ]; then _RC=1; break; fi
+
+      if ([ "${_ANSWER}" -eq 1 ] || [ "${_ANSWER}" == "y" ]) && [ "${_OK1:-""}" == "ok" ]; then _RC=1; break;
+      elif ([ "${_ANSWER}" -eq 2 ] || [ "${_ANSWER}" == "n" ]) && [ "${_OK2:-""}" == "ok" ]; then _RC=2; break;
+      elif [ "${_ANSWER}" -eq 3 ] && [ "${_OK3:-""}" == "ok" ]; then _RC=3; break;
+      elif [ "${_ANSWER}" -eq 4 ] && [ "${_OK4:-""}" == "ok" ]; then _RC=4; break;
+      fi
+   done
+
+   echo ${_RC}
+}
+
+#
+# Public: usage() function for all shell scripts.
+#
+function libgrav_common::usage() { #-# Public: usage() function for all shell scripts.
+   local _RC=${1}
+   local _TEXT="${2}"
+   local _ARGS="${3:-""}"
+   local _NOTE="${4:-""}"
+   local _INFO="${5:-""}"
+   local _HELP="${6:-""}"
+   local _ARG1="${7:-""}"
+   local _ARG2="${8:-""}"
+   local _ARG3="${9:-""}"
+   local _ARG4="${10:-""}"
+   local _ARG5="${11:-""}"
+   local _ARG6="${12:-""}"
+   local _ARG7="${13:-""}"
+
+   case ${_RC}  in
+      1)
+         libgrav_common::help "${_TEXT}" "${NAME}"
+         echo ""
+         libgrav_common::help "${_ARGS}" "${NAME}"
+         libgrav_common::help "${_NOTE}" "${NAME}"
+         echo ""
+         test ! -z "${_ARG1}" && libgrav_common::help "${_ARG1}" "${NAME}"
+         test ! -z "${_ARG2}" && libgrav_common::help "${_ARG2}" "${NAME}"
+         test ! -z "${_ARG3}" && libgrav_common::help "${_ARG3}" "${NAME}"
+         test ! -z "${_ARG4}" && libgrav_common::help "${_ARG4}" "${NAME}"
+         test ! -z "${_ARG5}" && libgrav_common::help "${_ARG5}" "${NAME}"
+         test ! -z "${_ARG6}" && libgrav_common::help "${_ARG6}" "${NAME}"
+         test ! -z "${_ARG7}" && libgrav_common::help "${_ARG7}" "${NAME}"
+         echo ""
+         libgrav_common::help "${_INFO}" "${NAME}"
+         libgrav_common::help "${_HELP}" "${NAME}"
+      ;;
+
+      *)
+         echo ""
+         echo ${_TEXT}
+      ;;
+   
+   esac
+   
+   exit ${_RC}
+}
+
+#
+# Public: os_type() return the current operating system string
+#
+function libgrav_common::os_type() { #-# Public: os_type(): return the current operating system
+   local _OSTYPE=""
+
+   case "$(uname -o)" in
+      "GNU/Linux") _OSTYPE="linux"; ;;
+         "Darwin") _OSTYPE="darwin"; ;;
+                *) _OSTYPE="unknown"; ;;
+   esac
+
+   echo ${_OSTYPE}
+}
+
+#
+# Public: version(): Build version of a three digit string (X.Y.Z) to be compared arithmetically
+#
+function libgrav_common::version() { #-# Public: version() Build version of a three digit string (X.Y.Z) to be compared arithmetically
+   local _VERSION="${@}"
+
+   echo "${_VERSION}" | awk -F. '{ printf("%d%04d%04d\n", $1,$2,$3); }'
+}

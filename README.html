@@ -366,8 +366,9 @@ code {
     });
   </script>
 <h1 id="docker-image-for-grav-in-development">Docker Image for Grav (in development)</h1>
-<p>TL;DR</p>
-<p>[Updated: 07.12.2022]</p>
+<p>TL;DR [Updated: 07.12.2022]</p>
+<img src="./media/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="15%"/>
+<p>[<a href="#img-grav" target="_blank">IMG.1</a>]: Grav CMS</p>
 <h2 id="index">Index</h2>
 <ul>
 <li><a href="#docker-image-for-grav-in-development">Docker Image for Grav (in development)</a>
@@ -406,7 +407,9 @@ code {
 </ul>
 </li>
 <li><a href="#50-running-the-image-from-dockerfile">5.0 Running the image from Dockerfile</a></li>
-<li><a href="#60-references">6.0 References</a></li>
+<li><a href="#60-abbreviation-reference-list">6.0 Abbreviation reference list</a></li>
+<li><a href="#70-image-reference-list">7.0 Image reference list</a></li>
+<li><a href="#80-link-reference-list">8.0 Link reference list</a></li>
 </ul>
 </li>
 </ul>
@@ -493,7 +496,7 @@ code {
 </tbody>
 </table>
 <blockquote>
-<p>NOTE: Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not End-of-Life, otherwise application security is highly impacted.</p>
+<p>NOTE: Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not <a href="#EOL">[EOL]</a>, otherwise application security is highly impacted.</p>
 </blockquote>
 <h3 id="11-packages">1.1 Packages</h3>
 <p>This project needs the following prerequisites on the HOST machine:</p>
@@ -621,7 +624,7 @@ variable is <code>${GRAV_HOME}</code>.</p>
 </ul>
 <h2 id="30-installation-procedure">3.0 Installation procedure</h2>
 <ul>
-<li>Install the prerequisite software (See <a href="#-prerequisites">Prerequisites</a></li>
+<li>Install the prerequisite software (See <a href="#10-prerequisites">1.0 Prerequisites</a>)</li>
 <li>Download the project with git <code>git clone https://github.com/giminni/docker-grav</code></li>
 <li>Change into the current project directory with <code>cd docker-grav</code></li>
 <li><code>docker-grav</code> is now your <code>&lt;PROJECT_HOME&gt;</code> directory</li>
@@ -722,7 +725,7 @@ Point your vscode remote-SSH plugin to the localhost host or to the designated I
 <li><code>${GRAV_HOME}/bin/grav-mkcache.sh</code> = Configures the local cache volume path <code>${GRAV_HOME}/cache/*</code></li>
 <li><code>${GRAV_HOME}/bin/grav-mkcert.sh</code> = Configures the local certificate volume path <code>${GRAV_HOME}/cert</code></li>
 <li><code>${GRAV_HOME}/bin/grav-mkdata.sh</code> = Configures the local data volume path <code>${GRAV_HOME}/data</code></li>
-<li><code>${GRAV_HOME}/bin/grav-mkinit.sh</code> = Initialize project, must run first. (See <a href="#-installation-procedure">Installation procecure</a>)</li>
+<li><code>${GRAV_HOME}/bin/grav-mkinit.sh</code> = Initialize project, must run first. (See <a href="#-installation-procedure">Installation procedure</a>)</li>
 <li><code>${GRAV_HOME}/bin/grav-mkpass.sh</code> = Configures the named container user and password</li>
 <li><code>${GRAV_HOME}/bin/grav-mkssh.sh</code> = Configures the SSH private and public files for rsync, git, ...</li>
 <li><code>${GRAV_HOME}/bin/grav-purge.sh</code> = Remove all grav artefacts, build cache, container and images</li>
@@ -816,7 +819,16 @@ grav-run:  Help: grav-run.sh: Instantiate a docker container depending from some
 <li><code>&lt;grav-user=grav&gt;/&lt;grav-name=&lt;grav|grav-admin&gt;:&lt;grav-tag=latest|testing&gt;</code></li>
 </ul>
 <p>E.g. <code>grav/grav:latest</code> for production images or <code>grav/grav-admin:testing</code> for development images.</p>
-<h2 id="60-references">6.0 References</h2>
+<h2 id="60-abbreviation-reference-list">6.0 Abbreviation reference list</h2>
+<ul>
+<li>[EOL]: <a id="EOL" href="#EOL">End of life</a></li>
+<li>[SVG]: <a id="SVG" href="#SVG"> Scalable Vector Graphics</a></li>
+</ul>
+<h2 id="70-image-reference-list">7.0 Image reference list</h2>
+<ul>
+<li>[IMG.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./media/Grav_logo.svg">Grav CMS <a href="#SVG">[SVG]</a></a></li>
+</ul>
+<h2 id="80-link-reference-list">8.0 Link reference list</h2>
 <ul>
 <li><a href="https://learn.getgrav.org/17">Grav v1.7 Documentation</a></li>
 <li><a href="https://github.com/docker-library/official-images#multiple-architectures">Docker multiple architectures</a></li>

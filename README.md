@@ -1,8 +1,10 @@
 # Docker Image for Grav (in development)
 
-TL;DR 
+TL;DR [Updated: 07.12.2022]
 
-[Updated: 07.12.2022]
+<img src="./media/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="15%"/>
+
+[<a href="#img-grav" target="_blank">IMG.1</a>]: Grav CMS
 
 ## Index
 
@@ -29,7 +31,9 @@ TL;DR
     - [4.2 Persisting data into an external storage](#42-persisting-data-into-an-external-storage)
     - [4.3 Building the image from Dockerfile](#43-building-the-image-from-dockerfile)
   - [5.0 Running the image from Dockerfile](#50-running-the-image-from-dockerfile)
-  - [6.0 References](#60-references)
+  - [6.0 Abbreviation reference list](#60-abbreviation-reference-list)
+  - [7.0 Image reference list](#70-image-reference-list)
+  - [8.0 Link reference list](#80-link-reference-list)
 
 ## 1.0 Prerequisites
 
@@ -56,7 +60,7 @@ In addition other packages are included:
 | net-tools           | php8.1-pgsql        | tree (>= 1.8.0)     | git (>= 2.17)       |                     |
 | dropbear            | php8.1_xdebug       | jq (>= 1.5)         | getssl (>= 2.32)    |                     |
 
-> NOTE: Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not End-of-Life, otherwise application security is highly impacted.
+> NOTE: Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not <a href="#EOL">[EOL]</a>, otherwise application security is highly impacted.
 
 ### 1.1 Packages
 
@@ -188,7 +192,7 @@ This project includes the following features:
 
 ## 3.0 Installation procedure
 
-* Install the prerequisite software (See [Prerequisites](#-prerequisites)
+* Install the prerequisite software (See [1.0 Prerequisites](#10-prerequisites))
 * Download the project with git `git clone https://github.com/giminni/docker-grav`
 * Change into the current project directory with `cd docker-grav`
 * `docker-grav` is now your `<PROJECT_HOME>` directory
@@ -312,7 +316,7 @@ This information is stored into local project connfig files that begins with `${
 * `${GRAV_HOME}/bin/grav-mkcache.sh` = Configures the local cache volume path `${GRAV_HOME}/cache/*`
 * `${GRAV_HOME}/bin/grav-mkcert.sh` = Configures the local certificate volume path `${GRAV_HOME}/cert`
 * `${GRAV_HOME}/bin/grav-mkdata.sh` = Configures the local data volume path `${GRAV_HOME}/data`
-* `${GRAV_HOME}/bin/grav-mkinit.sh` = Initialize project, must run first. (See [Installation procecure](#-installation-procedure))
+* `${GRAV_HOME}/bin/grav-mkinit.sh` = Initialize project, must run first. (See [Installation procedure](#-installation-procedure))
 * `${GRAV_HOME}/bin/grav-mkpass.sh` = Configures the named container user and password
 * `${GRAV_HOME}/bin/grav-mkssh.sh` = Configures the SSH private and public files for rsync, git, ...
 * `${GRAV_HOME}/bin/grav-purge.sh` = Remove all grav artefacts, build cache, container and images
@@ -432,7 +436,16 @@ The docker image has the following scheme:
 
 E.g. `grav/grav:latest` for production images or `grav/grav-admin:testing` for development images.
 
-## 6.0 References
+## 6.0 Abbreviation reference list
+
+- [EOL]: <a id="EOL" href="#EOL">End of life</a>
+- [SVG]: <a id="SVG" href="#SVG"> Scalable Vector Graphics</a>
+
+## 7.0 Image reference list
+
+- [IMG.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./media/Grav_logo.svg">Grav CMS <a href="#SVG">[SVG]</a></a>
+
+## 8.0 Link reference list
 
 * [Grav v1.7 Documentation](https://learn.getgrav.org/17)
 * [Docker multiple architectures](https://github.com/docker-library/official-images#multiple-architectures)

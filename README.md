@@ -2,11 +2,11 @@
 
 TL;DR [Updated: 07.12.2022]
 
-<img src="./assets/svg/Grav_logo.svg" style="fill:currentColor;" alt="Grav CMS" title="Grav CMS" width="15%"/>
+<img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="15%"/>
 
-Img. [<a href="#img-grav" target="_blank">1</a>]: Grav CMS
+[<a href="#img-grav" target="_blank">Img.1</a>]: Grav CMS
 
->NOTE: To dynamically invert SVG image colors depending on actual theme, see link [<a href="#lnk-8" target="_blank">8</a>] and [<a href="#lnk-9" target="_blank">9</a>].
+>NOTE: To dynamically invert <a href="#SVG">[SVG]</a> image colors depending on actual theme, see [<a href="#lnk-8" target="_blank">8</a>] and [<a href="#lnk-9" target="_blank">9</a>].
 
 ## Index
 
@@ -440,12 +440,12 @@ E.g. `grav/grav:latest` for production images or `grav/grav-admin:testing` for d
 
 ## [6.0 Abbreviation reference list](#index)
 
-- [EOL]: <a id="EOL" href="#EOL">End of life</a>
-- [SVG]: <a id="SVG" href="#SVG"> Scalable Vector Graphics</a>
+- [EOL]: <a id="EOL" href="https://en.wikipedia.org/wiki/EOL">End of life</a>
+- [SVG]: <a id="SVG" href="https://en.wikipedia.org/wiki/SVG">Scalable Vector Graphics</a>
 
 ## [7.0 Image reference list](#index)
 
-- [IMG.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg">Grav CMS</a> <a href="#SVG">[SVG]</a>
+- [Img.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg">Grav CMS</a> <a href="#SVG">[SVG]</a>
 
 ## [8.0 Link reference list](#index)
 

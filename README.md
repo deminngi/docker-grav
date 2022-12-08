@@ -4,7 +4,9 @@ TL;DR [Updated: 07.12.2022]
 
 <img src="./assets/svg/Grav_logo.svg" style="fill:currentColor;" alt="Grav CMS" title="Grav CMS" width="15%"/>
 
-[<a href="#img-grav" target="_blank">IMG.1</a>]: Grav CMS
+Img. [<a href="#img-grav" target="_blank">1</a>]: Grav CMS
+
+>NOTE: To dynamically invert SVG image colors depending on actual theme, see link [<a href="#lnk-8" target="_blank">8</a>] and [<a href="#lnk-9" target="_blank">9</a>].
 
 ## Index
 
@@ -443,14 +445,17 @@ E.g. `grav/grav:latest` for production images or `grav/grav-admin:testing` for d
 
 ## [7.0 Image reference list](#index)
 
-- [IMG.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg">Grav CMS <a href="#SVG">[SVG]</a></a>
+- [IMG.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg">Grav CMS</a> <a href="#SVG">[SVG]</a>
 
 ## [8.0 Link reference list](#index)
 
-* [Grav v1.7 Documentation](https://learn.getgrav.org/17)
-* [Docker multiple architectures](https://github.com/docker-library/official-images#multiple-architectures)
-* [Working with buildx](https://docs.docker.com/buildx/working-with-buildx)
-* [Visual Studio Code Tips & Trics](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
-* [Visual Studio Code macOS Shortcuts](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
-* [Visual Studio Code Linux Shortcuts](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
-* [Visual Studio Code Windows Shortcuts](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+- [1]: <a id="lnk-1" href="https://learn.getgrav.org/17">Grav v1.7 Documentation</a>
+- [2]: <a id="lnk-2" href="https://github.com/docker-library/official-images#multiple-architectures">Docker multiple architectures</a>
+- [3]: <a id="lnk-3" href="https://docs.docker.com/buildx/working-with-buildx">Working with buildx</a>
+- [4]: <a id="lnk-4" href="https://code.visualstudio.com/docs/getstarted/tips-and-tricks">Visual Studio Code Tips & Trics</a>
+- [5]: <a id="lnk-5" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf">Visual Studio Code macOS Shortcuts</a>
+- [6]: <a id="lnk-6" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf">Visual Studio Code Linux Shortcuts</a>
+- [7]: <a id="lnk-7" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf">Visual Studio Code Windows Shortcuts</a>
+- [8]: <a id="lnk-8" href="https://www.ctrl.blog/entry/svg-embed-dark-mode.html">Embed SVG images in dark mode</a>
+- [9]: <a id="lnk-9" href="https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/">Colorize SVG background color with CSS filters</a>
+

@@ -10,7 +10,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <devs
+  <defs
      id="defs13">
      <style>
        svg {
@@ -23,7 +23,7 @@
          }
        }     
      </style>
-   </devs>  
+   </defs>  
   <g
      id="g15"
      fill=currentColor>

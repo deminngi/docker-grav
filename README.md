@@ -1,13 +1,8 @@
-<style>
-  svg { background-color:white; color-scheme:light dark; }
-  @media (prefers-color-scheme:dark) { svg { background-color:black; } }
-</style>
-
 # [Docker Image for Grav (in development)](#index)
 
 TL;DR [Updated: 07.12.2022]
 
-<img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="15%"/>
+<div style="fill:currentColor;"><img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="15%"/></div>
 
 [<a href="#img-grav" target="_blank">IMG.1</a>]: Grav CMS
 

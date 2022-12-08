@@ -3,4 +3,4 @@
 * text=auto
 
 # Make all text files lf formatted
-*     text eol=lf
+* text eol=lf

@@ -1,3 +1,7 @@
+<style type="text/css" rel="stylesheet">
+svg { fill=currentColor; }
+</style>
+
 # [Docker Image for Grav (in development)](#index)
 
 TL;DR [Updated: 07.12.2022]

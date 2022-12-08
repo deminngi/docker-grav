@@ -19,7 +19,7 @@
        }
        @media (prefers-color-scheme:dark) {
          svg {
-           color-scheme:revert;
+           filter: invert(1);
          }
        }
      </style>

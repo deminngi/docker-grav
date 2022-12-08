@@ -10,8 +10,20 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs13" />
+  <defs>
+     id="defs13"
+      <style>
+         svg {
+            background-color: white;
+            color-scheme:light dark;
+         }
+         @media (prefers-color-scheme:dark) {
+            svg {
+               background-color: black;
+            }
+         }     
+      </style>
+   </defs>  
   <g
      id="g15"
      fill=currentColor>

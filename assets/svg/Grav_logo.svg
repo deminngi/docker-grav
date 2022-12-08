@@ -14,12 +14,12 @@
      id="defs13">
      <style>
        svg {
-         background-color:white;
-         color-scheme:light dark;
+         background-color: white;
+         color-scheme: light dark;
        }
        @media (prefers-color-scheme:dark) {
          svg {
-           background-color:black;
+           background-color: black;
            filter: invert(1); brightness(100);
          }
        }

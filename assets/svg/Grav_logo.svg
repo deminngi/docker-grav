@@ -19,7 +19,7 @@
        }
        @media (prefers-color-scheme:dark) {
          svg {
-           color-scheme 
+           background-color:black;
            filter: invert(1); brightness(100);
          }
        }

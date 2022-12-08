@@ -1,12 +1,12 @@
-<style type="text/css" rel="stylesheet">
-svg { fill=currentColor; }
+<style>
+  .svg { fill: currentColor; }
 </style>
 
 # [Docker Image for Grav (in development)](#index)
 
 TL;DR [Updated: 07.12.2022]
 
-<img src="./media/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="15%"/>
+<div class="svg"><img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="15%"/></div>
 
 [<a href="#img-grav" target="_blank">IMG.1</a>]: Grav CMS
 
@@ -447,7 +447,7 @@ E.g. `grav/grav:latest` for production images or `grav/grav-admin:testing` for d
 
 ## [7.0 Image reference list](#index)
 
-- [IMG.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./media/Grav_logo.svg">Grav CMS <a href="#SVG">[SVG]</a></a>
+- [IMG.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg">Grav CMS <a href="#SVG">[SVG]</a></a>
 
 ## [8.0 Link reference list](#index)
 

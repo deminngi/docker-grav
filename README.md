@@ -2,7 +2,7 @@
 
 TL;DR [Updated: 07.12.2022]
 
-<div style="fill:currentColor;"><img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="15%"/></div>
+<img src="./assets/svg/Grav_logo.svg" style="fill:currentColor;" alt="Grav CMS" title="Grav CMS" width="15%"/>
 
 [<a href="#img-grav" target="_blank">IMG.1</a>]: Grav CMS
 

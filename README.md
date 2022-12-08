@@ -1,4 +1,4 @@
-# Docker Image for Grav (in development)
+# [Docker Image for Grav (in development)](#index)
 
 TL;DR [Updated: 07.12.2022]
 
@@ -35,7 +35,7 @@ TL;DR [Updated: 07.12.2022]
   - [7.0 Image reference list](#70-image-reference-list)
   - [8.0 Link reference list](#80-link-reference-list)
 
-## 1.0 Prerequisites
+## [1.0 Prerequisites](#index)
 
 This project is cloned from the official [GRAV GitHub](https://github.com/getgrav/docker-grav) repository. If you want work with me, feel free to download it from [my GitHub](https://github.com/giminni/docker-grav) repository.
 
@@ -62,7 +62,7 @@ In addition other packages are included:
 
 > NOTE: Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not <a href="#EOL">[EOL]</a>, otherwise application security is highly impacted.
 
-### 1.1 Packages
+### [1.1 Packages](#index)
 
 This project needs the following prerequisites on the HOST machine:
 
@@ -129,7 +129,7 @@ variable is `${GRAV_HOME}`.
 > - **brew upgrade <package-name>`**
 > - **getssl --upgrade**.
 
-## 2.0 Project structure
+## [2.0 Project structure](#index)
 
 The project consists of different directories, each one has a specific role:
 
@@ -157,7 +157,7 @@ ${GRAV_HOME}
 >
 > To initialize the project, execute `./bin/grav-mkinit.sh init` first from the `${GRAV_HOME}` directory, then activate it with `source ${HOME}/.bashrc`. From this moment you can also use the short form without appending `.sh`, e.g. `grav-mkinit`.
 
-### 2.1 Project features
+### [2.1 Project features](#index)
 
 This project includes the following features:
 
@@ -179,7 +179,7 @@ This project includes the following features:
 * Create a repository `${GRAV_HOME}/rootfs/tmp/grav/core` for caching grav core packages
 * Use a bunch of local bash shared library `libgrav*` for all local bash scripts
 
-### 2.2 Work in progress
+### [2.2 Work in progress](#index)
 
 * (WIP) Install PHP xdebug for vscode debugging over remote xdebug port
 * (WIP) Support letsencrypt SSL keys with getssl bash script
@@ -190,7 +190,7 @@ This project includes the following features:
 * (TBD) Use buildx with docker composer file
 * (TBD) Ability to install grav skeletons and plugins
 
-## 3.0 Installation procedure
+## [3.0 Installation procedure](#index)
 
 * Install the prerequisite software (See [1.0 Prerequisites](#10-prerequisites))
 * Download the project with git `git clone https://github.com/giminni/docker-grav`
@@ -209,7 +209,7 @@ This project includes the following features:
 * Run the docker image with `grav-run.sh grav grav-admin testing` for the development version or `grav_run.sh grav` for the production version.
 * Enter the command line of the running grav image, with `grav-shell.sh grav-admin` for the development version or `grav-shell.sh grav` for the production version.
 
-### 3.1 Installation checklist
+### [3.1 Installation checklist](#index)
 
 * Check if scripts are available by entering `grav-` and pressing the TAB-key.
 * Check aliases from the command line with `alias`.
@@ -224,7 +224,7 @@ This project includes the following features:
 * Check if the docker grav image exists, with `sudo docker images`.
 * Check if the docker grav image is running, with `sudo docker ps -a`.
 
-### 3.2 Using local key/value files for configuration
+### [3.2 Using local key/value files for configuration](#index)
 
 To persist some project configuration data a couple of key/value files are created in the `${GRAV_HOME}/cfg` directory. A `${GRAV_HOME}/.context` file will be generated with `<PROJECT_HOME/bin/grav-mkinit.sh init` at init time holding the configuration directory where all configuration files are stored.
 
@@ -242,17 +242,17 @@ GRAV_BIN="${GRAV_HOME}/bin"
 
 > **Note:** Every configuration files can be changed manually by expert user or use the handy local bash scripts that starts with `${GRAV_HOME}/bin/grav-mk*.sh` for novice user.
 
-### 3.3 Using docker multiarch environment
+### [3.3 Using docker multiarch environment](#index)
 
 Using the extended docker build features of `buildx` this project is prepared for multiarch images. That means it uses one name for different target architectures `linux/amd64, linux/arm64, linux/armv7, ...`. Currently only the `linux/amd64` architecture is supported.
 
-### 3.4 Using local docker cache repository
+### [3.4 Using local docker cache repository](#index)
 
 In addition to the build and compile cache environment, there is another local directory `./${GRAV_HOME}/rootfs/*` that holds cached artefacts. This directory can be used to store for example the grav core zip files to reduce bandwith and avoid a lengthy download time from the internet.
 
 In this case store the `grav-admin.zip` file under `${GRAV_HOME}/rootfs/tmp`. If the name is correct the file will be inserted into the docker buildtime context and used instead of downloading the file from the internet.
 
-### 3.5 Handling user password and SSH secrets
+### [3.5 Handling user password and SSH secrets](#index)
 
 The extended docker build features of `buildx` allows injecting sensitive data without leaving any history trace. The user password is generated externally with openssl `SHA512` encryption by a provided bash script `${GRAV_HOME}/bin/mkssh.sh`. The encrypted password is then stored under `${GRAV_HOME}/key/grav_pass.key` and injected into the container at buildtime.
 
@@ -260,26 +260,26 @@ The same thing occures for the SSH private and public key. The key are stored un
 
 > **Note:** Ensure that the SSH keys and user match the SSH keys of an external user on the local or remote host. Otherwise the user autologin over SSH and cache synchronization over github, rsync does not work.
 
-### 3.6 Caching docker buildtime
+### [3.6 Caching docker buildtime](#index)
 
 The extended docker build features of `buildx` allows to store the docker buildtime cache into a local project directory `${GRAV_HOME}/cache/.dcache`. This can be of course changed to push/pull from a pubic/private registry if needed.
 
-### 3.7 Running services as non-root user
+### [3.7 Running services as non-root user](#index)
 
 To increase the overall security the privilege for required services (SSH, Cron and Apache) are deescalated to a non root user (grav). This is realized with `su-exec` `dropbear` and `go-cron`.
 
-### 3.8 Persisting build cache using ccache and rsync
+### [3.8 Persisting build cache using ccache and rsync](#index)
 
 `CCache` and `rsync` are used to speedup the building of PHP extensions. At buildtime and before the PHP compilation is started, the external cache directory `${GRAV_HOME}/cache/.ccache` is read with `rsync` into the docker container `<CONTAINER_ROOT>/tmp/.ccache`. CCache will reroute the compiler call to this specific directory for faster compilation. Before all build artefacts are removed the cache directory `<CONTAINER_ROOT>/tmp/.ccache` is exported with `rsync` using incremental backup to preserve the compiled data for a next build  `${GRAV_HOME}/cache/.ccache`.
 
 > **Note:** Ensure that the SSH keys and user match the SSH keys of an external user on the local or remote host.
 
-### 3.9 Working with vscode locally or remotely
+### [3.9 Working with vscode locally or remotely](#index)
 
 To avoid direct access to the docker container a SSH user is fully provided and configured. The SSH server is listening on port `2222` to avoid collision with other primary SSH server.
 Point your vscode remote-SSH plugin to the localhost host or to the designated IP address and port `2222` to access the docker image for development.
 
-### 3.10 Managing a container from the command line
+### [3.10 Managing a container from the command line](#index)
 
 There are a couple of local bash scripts to create, run and delete a container:
 
@@ -289,7 +289,7 @@ There are a couple of local bash scripts to create, run and delete a container:
 * `grav-shell.sh` is used for accessing the command line inside a container
 * `grav-purge.sh` is used for deleting all docker cached data, container and image artefacts.
 
-## 4.0 Configuring a container from the command line
+## [4.0 Configuring a container from the command line](#index)
 
 The following data is needed to be able to build or run a container:
 
@@ -326,7 +326,7 @@ This information is stored into local project connfig files that begins with `${
 
 > **Note:** Please consult the usage information of each local bash script by executing the command without arguments.
 
-### 4.1 Downloading files to be cached into the rootfs directory
+### [4.1 Downloading files to be cached into the rootfs directory](#index)
 
 To be able to create the project in offline situation or minimize the download time from the internet, two tasks must be executed:
 
@@ -340,13 +340,13 @@ ${GRAV_HOME}/bin/grav-core.sh get 1.6.0 grav-admin
 
 > **Note:** The files are stored into the `${GRAV_HOME}/rootfs/tmp`. To reduce the container size, remove all superfluous artefacts before starting the build.
 
-### 4.2 Persisting data into an external storage
+### [4.2 Persisting data into an external storage](#index)
 
 To save the Grav site data to the host file system (so that it persists even after the container has been removed), simply map the container's `/var/www/html` directory to a named Docker volume `data`. This named docker volume `data` is mapped into the project directory on the host `${GRAV_HOME}/data`.
 
 > **Note:** If the mapped directory or named volume is empty, it will be automatically populated with a fresh install of Grav the first time that the container starts. However, once the directory/volume has been populated, the data will persist and will not be overwritten the next time the container starts.
 
-### 4.3 Building the image from Dockerfile
+### [4.3 Building the image from Dockerfile](#index)
 
 To build the image from the command line a local bash script `${GRAV_HOME}/bin/grav-build.sh` is used.
 
@@ -385,7 +385,7 @@ grav-build: Info: grav-build.sh grav grav-admin latest /home/rpiadmin/Workspace/
 grav-build: Help: grav-build.sh: Builds the docker file from some entered arguments. (See Note, Info and Args)
 ```
 
-## 5.0 Running the image from Dockerfile
+## [5.0 Running the image from Dockerfile](#index)
 
 To run the image from the command line a local bash script `${GRAV_HOME}/bin/grav-run.sh` is needed.
 This script as a lot of presetted arguments. The first argument is mandatory if not set the script emits a usage string. The default run mode is `n`ormal if there is a need to start only a bash command line and test something inside, run with the `d`ebug flag set.
@@ -436,16 +436,16 @@ The docker image has the following scheme:
 
 E.g. `grav/grav:latest` for production images or `grav/grav-admin:testing` for development images.
 
-## 6.0 Abbreviation reference list
+## [6.0 Abbreviation reference list](#index)
 
 - [EOL]: <a id="EOL" href="#EOL">End of life</a>
 - [SVG]: <a id="SVG" href="#SVG"> Scalable Vector Graphics</a>
 
-## 7.0 Image reference list
+## [7.0 Image reference list](#index)
 
 - [IMG.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./media/Grav_logo.svg">Grav CMS <a href="#SVG">[SVG]</a></a>
 
-## 8.0 Link reference list
+## [8.0 Link reference list](#index)
 
 * [Grav v1.7 Documentation](https://learn.getgrav.org/17)
 * [Docker multiple architectures](https://github.com/docker-library/official-images#multiple-architectures)

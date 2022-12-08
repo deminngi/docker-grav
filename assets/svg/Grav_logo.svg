@@ -19,7 +19,8 @@
        }
        @media (prefers-color-scheme:dark) {
          svg {
-           background-color:white;
+           background-color:black;
+           path { fill:white; }
          }
        }
      </style>

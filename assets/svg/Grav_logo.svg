@@ -14,18 +14,18 @@
      id="defs13">
      <style>
        svg {
-         background-color: white;
-           color-scheme:light dark;
+         background-color:white;
+         color-scheme:light dark;
        }
        @media (prefers-color-scheme:dark) {
          svg {
-           background-color: black;
+           background-color:black;
          }
-       }     
+       }
      </style>
-   </defs>  
+  </defs>
   <g
-     id="g15"
+     id="g15">
     <image
        width="432.67606"
        height="432.67606"

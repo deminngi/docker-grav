@@ -1,10 +1,10 @@
 # [Docker Image for Grav CMS](#index)
 
 [![OWNER](https://img.shields.io/badge/OWNER-Giovanni_Minniti-blue.svg)](https://github/giminni/docker-grav) [![GITHUB](https://img.shields.io/badge/GITHUB-docker--grav-blue.svg)](https://github/giminni/docker-grav) [![BRANCH](https://img.shields.io/badge/BRANCH-Main-blue.svg)](https://github/giminni/docker-grav) \
-[![SEMVER](https://img.shields.io/badge/SEMVER-1.x.x-orange.svg)](https://github/giminni/docker-grav) [![STATUS](https://img.shields.io/badge/STATUS-Development-orange.svg)](https://github/giminni/docker-grav) [![BUILDS](https://img.shields.io/badge/BUILDS-Unknown-red.svg)](https://github/giminni/docker-grav) \
+[![SEMVER](https://img.shields.io/badge/SEMVER-1.x.x-orange.svg)](https://github/giminni/docker-grav) [![STATUS](https://img.shields.io/badge/STATUS-Development-orange.svg)](https://github/giminni/docker-grav) [![BUILDS](https://img.shields.io/badge/BUILDS-Unknown-lightgrey.svg)](https://github/giminni/docker-grav) \
 [![PHPVER](https://img.shields.io/badge/PHPVER-8.1.x-magenta.svg)](https://github/giminni/docker-grav) [![APACHE](https://img.shields.io/badge/APACHE-2.4.x-magenta.svg)](https://github/giminni/docker-grav) [![CMSVER](https://img.shields.io/badge/CMSVER-1.7.x-magenta.svg)](https://github/giminni/docker-grav) \
 [![UPDATE](https://img.shields.io/badge/UPDATE-10.12.2022-green.svg)](https://github/giminni/docker-grav) \
-[![TARGET](https://img.shields.io/badge/TARGET-amd64-brown.svg)](https://github/giminni/docker-grav)
+[![TARGET](https://img.shields.io/badge/TARGET-amd64-blueviolet.svg)](https://github/giminni/docker-grav)
 
 <img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/> \
 <a href="#img-1"><img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> Grav CMS</a>

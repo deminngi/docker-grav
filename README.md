@@ -473,6 +473,5 @@ docker-grav was released under [Apache License Version 2.0](/LICENSE) by [Giovan
 ## [10.0 Notes](#index)
 
 - To dynamically invert <a href="#SVG">[SVG]</a> image colors depending on actual theme with inline CSS, see [<a href="#lnk-8" target="_blank">8</a>] and [<a href="#lnk-9" target="_blank">9</a>].
-
 - To use generic badges in markdown files, see [<a href="#lnk-10" target="_blank">10</a>] and [<a href="#lnk-11" target="_blank">11</a>].
 

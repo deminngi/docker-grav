@@ -1,10 +1,10 @@
 # [Docker Image for Grav CMS](#index)
 
-[![Owner](https://img.shields.io/badge/OWNER-Giovanni_Minniti-blue.svg)](https://shields.io/) [![GitHub](https://img.shields.io/badge/GITHUB-docker--grav-blue.svg)](https://shields.io/) [![Branch](https://img.shields.io/badge/BRANCH-Main-blue.svg)](https://shields.io/) \
-[![Semver](https://img.shields.io/badge/SEMVER-1.x.x-orange.svg)](https://shields.io/) [![Status](https://img.shields.io/badge/STATUS-Development-orange.svg)](https://shields.io/) \
-[![Apache](https://img.shields.io/badge/APACHE-2.4.x-magenta.svg)](https://shields.io/) [![PHP](https://img.shields.io/badge/PHPVER-8.1.x-magenta.svg)](https://shields.io/) \
-[![Update](https://img.shields.io/badge/UPDATE-10.12.2022-green.svg)](https://shields.io/) \
-[![Target](https://img.shields.io/badge/TARGET-amd64-brown.svg)](https://shields.io/)
+[![OWNER](https://img.shields.io/badge/OWNER-Giovanni_Minniti-blue.svg)](https://shields.io/) [![GITHUB](https://img.shields.io/badge/GITHUB-docker--grav-blue.svg)](https://shields.io/) [![BRANCH](https://img.shields.io/badge/BRANCH-Main-blue.svg)](https://shields.io/) \
+[![PHPVER](https://img.shields.io/badge/PHPVER-8.1.x-magenta.svg)](https://shields.io/) [![APACHE](https://img.shields.io/badge/APACHE-2.4.x-magenta.svg)](https://shields.io/) [![CMSVER](https://img.shields.io/badge/CMSVER-1.7.x-magenta.svg)](https://shields.io/) \
+[![SEMVER](https://img.shields.io/badge/SEMVER-1.x.x-orange.svg)](https://shields.io/) [![STATUS](https://img.shields.io/badge/STATUS-Development-orange.svg)](https://shields.io/) \
+[![UPDATE](https://img.shields.io/badge/UPDATE-10.12.2022-green.svg)](https://shields.io/) \
+[![TARGET](https://img.shields.io/badge/TARGET-amd64-brown.svg)](https://shields.io/)
 
 <img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/>
 

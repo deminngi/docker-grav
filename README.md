@@ -10,10 +10,6 @@
 
 [<a href="#img-grav" target="_blank">Img.1</a>]: Grav CMS
 
->NOTE: To dynamically invert <a href="#SVG">[SVG]</a> image colors depending on actual theme with inline CSS, see [<a href="#lnk-8" target="_blank">8</a>] and [<a href="#lnk-9" target="_blank">9</a>].
-
->NOTE: To use generic badges in markdown files, see [<a href="#lnk-10" target="_blank">10</a>] and [<a href="#lnk-11" target="_blank">11</a>].
-
 ## Index
 
 - [Docker Image for Grav CMS](#docker-image-for-grav-cms)
@@ -43,6 +39,7 @@
   - [7.0 Abbreviation reference list](#70-abbreviation-reference-list)
   - [8.0 Image reference list](#80-image-reference-list)
   - [9.0 Link reference list](#90-link-reference-list)
+  - [10.0 Notes](#100-notes)
 
 ## [1.0 Prerequisites](#index)
 
@@ -471,3 +468,10 @@ docker-grav was released under [Apache License Version 2.0](/LICENSE) by [Giovan
 - [9]: <a id="lnk-9" href="https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/">Colorize SVG background color with CSS filters</a>
 - [10]: <a id="lnk-10" href="https://github.com/Naereen/badges">GitHub badges examples with Shields.io</a>
 - [11]: <a id="lnk-11" href="https://shields.io/">Shields.io website</a>
+
+## [10.0 Notes](#index)
+
+- To dynamically invert <a href="#SVG">[SVG]</a> image colors depending on actual theme with inline CSS, see [<a href="#lnk-8" target="_blank">8</a>] and [<a href="#lnk-9" target="_blank">9</a>].
+
+- To use generic badges in markdown files, see [<a href="#lnk-10" target="_blank">10</a>] and [<a href="#lnk-11" target="_blank">11</a>].
+

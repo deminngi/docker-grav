@@ -10,7 +10,9 @@
 
 [<a href="#img-grav" target="_blank">Img.1</a>]: Grav CMS
 
->NOTE: To dynamically invert <a href="#SVG">[SVG]</a> image colors depending on actual theme, see [<a href="#lnk-8" target="_blank">8</a>] and [<a href="#lnk-9" target="_blank">9</a>].
+>NOTE: To dynamically invert <a href="#SVG">[SVG]</a> image colors depending on actual theme with inline CSS, see [<a href="#lnk-8" target="_blank">8</a>] and [<a href="#lnk-9" target="_blank">9</a>].
+
+>NOTE: To use generic badges in markdown files, see [<a href="#lnk-10" target="_blank">10</a>] and [<a href="#lnk-11" target="_blank">11</a>].
 
 ## Index
 

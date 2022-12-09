@@ -6,8 +6,7 @@
 [![UPDATE](https://img.shields.io/badge/UPDATE-10.12.2022-green.svg)](https://shields.io/) \
 [![TARGET](https://img.shields.io/badge/TARGET-amd64-brown.svg)](https://shields.io/)
 
-<img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/>
-
+<img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/> \
 [<a href="#img-grav" target="_blank">Img.1</a>]: Grav CMS
 
 ## Index

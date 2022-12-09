@@ -448,26 +448,26 @@ docker-grav was released under [Apache License Version 2.0](/LICENSE) by [Giovan
 
 ## [7.0 Abbreviation reference list](#index)
 
-- [EOL]: <a id="EOL" href="https://en.wikipedia.org/wiki/EOL">End of life</a>
-- [SVG]: <a id="SVG" href="https://en.wikipedia.org/wiki/SVG">Scalable Vector Graphics</a>
+- [EOL]: <a id="EOL" href="https://en.wikipedia.org/wiki/EOL" target="_blank">End of life</a>
+- [SVG]: <a id="SVG" href="https://en.wikipedia.org/wiki/SVG" target="_blank">Scalable Vector Graphics</a>
 
 ## [8.0 Image reference list](#index)
 
-- [Img.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg">Grav CMS</a> <a href="#SVG">[SVG]</a>
+- [Img.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg" target="_blank">Grav CMS</a> <a href="#SVG">[SVG]</a>
 
 ## [9.0 Link reference list](#index)
 
-- [1]: <a id="lnk-1" href="https://learn.getgrav.org/17">Grav v1.7 Documentation</a>
-- [2]: <a id="lnk-2" href="https://github.com/docker-library/official-images#multiple-architectures">Docker multiple architectures</a>
-- [3]: <a id="lnk-3" href="https://docs.docker.com/buildx/working-with-buildx">Working with buildx</a>
-- [4]: <a id="lnk-4" href="https://code.visualstudio.com/docs/getstarted/tips-and-tricks">Visual Studio Code Tips & Trics</a>
-- [5]: <a id="lnk-5" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf">Visual Studio Code macOS Shortcuts</a>
-- [6]: <a id="lnk-6" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf">Visual Studio Code Linux Shortcuts</a>
-- [7]: <a id="lnk-7" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf">Visual Studio Code Windows Shortcuts</a>
-- [8]: <a id="lnk-8" href="https://www.ctrl.blog/entry/svg-embed-dark-mode.html">Embed SVG images in dark mode</a>
-- [9]: <a id="lnk-9" href="https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/">Colorize SVG background color with CSS filters</a>
-- [10]: <a id="lnk-10" href="https://github.com/Naereen/badges">GitHub badges examples with Shields.io</a>
-- [11]: <a id="lnk-11" href="https://shields.io/">Shields.io website</a>
+- [1]: <a id="lnk-1" href="https://learn.getgrav.org/17" target="_blank">Grav v1.7 Documentation</a>
+- [2]: <a id="lnk-2" href="https://github.com/docker-library/official-images#multiple-architectures" target="_blank">Docker multiple architectures</a>
+- [3]: <a id="lnk-3" href="https://docs.docker.com/buildx/working-with-buildx" target="_blank">Working with buildx</a>
+- [4]: <a id="lnk-4" href="https://code.visualstudio.com/docs/getstarted/tips-and-tricks" target="_blank">Visual Studio Code Tips & Trics</a>
+- [5]: <a id="lnk-5" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf" target="_blank">Visual Studio Code macOS Shortcuts</a>
+- [6]: <a id="lnk-6" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf" target="_blank">Visual Studio Code Linux Shortcuts</a>
+- [7]: <a id="lnk-7" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf" target="_blank">Visual Studio Code Windows Shortcuts</a>
+- [8]: <a id="lnk-8" href="https://www.ctrl.blog/entry/svg-embed-dark-mode.html" target="_blank">Embed SVG images in dark mode</a>
+- [9]: <a id="lnk-9" href="https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/" target="_blank">Colorize SVG background color with CSS filters</a>
+- [10]: <a id="lnk-10" href="https://github.com/Naereen/badges" target="_blank">GitHub badges examples with Shields.io</a>
+- [11]: <a id="lnk-11" href="https://shields.io/" target="_blank">Shields.io website</a>
 
 ## [10.0 Notes](#index)
 

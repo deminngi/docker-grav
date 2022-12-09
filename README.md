@@ -41,6 +41,8 @@
   - [9.0 Link reference list](#90-link-reference-list)
   - [10.0 Notes](#100-notes)
 
+>NOTE: This index list can be reached by clicking on every chapter or sub chapter header along this document.
+
 ## [1.0 Prerequisites](#index)
 
 This project is cloned from the official [GRAV CMS GitHub](https://github.com/getgrav/docker-grav) repository. If you want work with me, feel free to download it from [my docker-grav GitHub](https://github.com/giminni/docker-grav) repository.

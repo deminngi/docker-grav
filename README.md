@@ -1,8 +1,12 @@
-# [Docker Image for Grav (in development)](#index)
+# [Docker Image for Grav CMS](#index)
 
-TL;DR [Updated: 07.12.2022]
+[![Owner](https://img.shields.io/badge/OWNER-Giovanni_Minniti-blue.svg)](https://shields.io/) [![GitHub](https://img.shields.io/badge/GITHUB-docker--grav-blue.svg)](https://shields.io/) [![Branch](https://img.shields.io/badge/BRANCH-Main-blue.svg)](https://shields.io/)
+[![Semver](https://img.shields.io/badge/SEMVER-1.0.0-orange.svg)](https://shields.io/) [![Status](https://img.shields.io/badge/STATUS-Development-orange.svg)](https://shields.io/)
+[![Apache](https://img.shields.io/badge/APACHE-2.4.x-magenta.svg)](https://shields.io/) [![PHP](https://img.shields.io/badge/PHPVER-8.1.x-magenta.svg)](https://shields.io/)
+[![Update](https://img.shields.io/badge/UPDATE-10.12.2022-red.svg)](https://shields.io/)
+[![Target](https://img.shields.io/badge/TARGET-amd64-brown.svg)](https://shields.io/)
 
-<img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="15%"/>
+<img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/>
 
 [<a href="#img-grav" target="_blank">Img.1</a>]: Grav CMS
 
@@ -10,7 +14,7 @@ TL;DR [Updated: 07.12.2022]
 
 ## Index
 
-- [Docker Image for Grav (in development)](#docker-image-for-grav-in-development)
+- [Docker Image for Grav CMS](#docker-image-for-grav-cms)
   - [Index](#index)
   - [1.0 Prerequisites](#10-prerequisites)
     - [1.1 Packages](#11-packages)
@@ -33,13 +37,14 @@ TL;DR [Updated: 07.12.2022]
     - [4.2 Persisting data into an external storage](#42-persisting-data-into-an-external-storage)
     - [4.3 Building the image from Dockerfile](#43-building-the-image-from-dockerfile)
   - [5.0 Running the image from Dockerfile](#50-running-the-image-from-dockerfile)
-  - [6.0 Abbreviation reference list](#60-abbreviation-reference-list)
-  - [7.0 Image reference list](#70-image-reference-list)
-  - [8.0 Link reference list](#80-link-reference-list)
+  - [6.0 License agreement](#60-license-agreement)
+  - [7.0 Abbreviation reference list](#70-abbreviation-reference-list)
+  - [8.0 Image reference list](#80-image-reference-list)
+  - [9.0 Link reference list](#90-link-reference-list)
 
 ## [1.0 Prerequisites](#index)
 
-This project is cloned from the official [GRAV GitHub](https://github.com/getgrav/docker-grav) repository. If you want work with me, feel free to download it from [my GitHub](https://github.com/giminni/docker-grav) repository.
+This project is cloned from the official [GRAV CMS GitHub](https://github.com/getgrav/docker-grav) repository. If you want work with me, feel free to download it from [my docker-grav GitHub](https://github.com/giminni/docker-grav) repository.
 
 It contains the original packages based on PHP 8.1:
 
@@ -129,7 +134,7 @@ variable is `${GRAV_HOME}`.
 
 > NOTE: If you have installed all the above mentioned packages earlier, you can update it with:
 > - **brew upgrade <package-name>`**
-> - **getssl --upgrade**.
+> - **getssl --upgrade**
 
 ## [2.0 Project structure](#index)
 
@@ -438,16 +443,20 @@ The docker image has the following scheme:
 
 E.g. `grav/grav:latest` for production images or `grav/grav-admin:testing` for development images.
 
-## [6.0 Abbreviation reference list](#index)
+## [6.0 License agreement](#index)
+
+docker-grav was released under [Apache License Version 2.0](/LICENSE) by [Giovanni Minniti](https://github.com/giminni/docker-grav).
+
+## [7.0 Abbreviation reference list](#index)
 
 - [EOL]: <a id="EOL" href="https://en.wikipedia.org/wiki/EOL">End of life</a>
 - [SVG]: <a id="SVG" href="https://en.wikipedia.org/wiki/SVG">Scalable Vector Graphics</a>
 
-## [7.0 Image reference list](#index)
+## [8.0 Image reference list](#index)
 
 - [Img.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg">Grav CMS</a> <a href="#SVG">[SVG]</a>
 
-## [8.0 Link reference list](#index)
+## [9.0 Link reference list](#index)
 
 - [1]: <a id="lnk-1" href="https://learn.getgrav.org/17">Grav v1.7 Documentation</a>
 - [2]: <a id="lnk-2" href="https://github.com/docker-library/official-images#multiple-architectures">Docker multiple architectures</a>
@@ -458,4 +467,5 @@ E.g. `grav/grav:latest` for production images or `grav/grav-admin:testing` for d
 - [7]: <a id="lnk-7" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf">Visual Studio Code Windows Shortcuts</a>
 - [8]: <a id="lnk-8" href="https://www.ctrl.blog/entry/svg-embed-dark-mode.html">Embed SVG images in dark mode</a>
 - [9]: <a id="lnk-9" href="https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/">Colorize SVG background color with CSS filters</a>
-
+- [10]: <a id="lnk-10" href="https://github.com/Naereen/badges">GitHub badges examples with Shields.io</a>
+- [11]: <a id="lnk-11" href="https://shields.io/">Shields.io website</a>

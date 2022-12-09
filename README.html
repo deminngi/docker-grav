@@ -365,16 +365,20 @@ code {
           : 'default'
     });
   </script>
-<h1 id="docker-image-for-grav-in-development"><a href="#index">Docker Image for Grav (in development)</a></h1>
-<p>TL;DR [Updated: 07.12.2022]</p>
-<img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="15%"/>
+<h1 id="docker-image-for-grav-cms"><a href="#index">Docker Image for Grav CMS</a></h1>
+<p><a href="https://shields.io/"><img src="https://img.shields.io/badge/OWNER-Giovanni_Minniti-blue.svg" alt="Owner"></a> <a href="https://shields.io/"><img src="https://img.shields.io/badge/GITHUB-docker--grav-blue.svg" alt="GitHub"></a> <a href="https://shields.io/"><img src="https://img.shields.io/badge/BRANCH-Main-blue.svg" alt="Branch"></a>
+<a href="https://shields.io/"><img src="https://img.shields.io/badge/SEMVER-1.0.0-orange.svg" alt="Semver"></a> <a href="https://shields.io/"><img src="https://img.shields.io/badge/STATUS-Development-orange.svg" alt="Status"></a>
+<a href="https://shields.io/"><img src="https://img.shields.io/badge/APACHE-2.4.x-magenta.svg" alt="Apache"></a> <a href="https://shields.io/"><img src="https://img.shields.io/badge/PHPVER-8.1.x-magenta.svg" alt="PHP"></a>
+<a href="https://shields.io/"><img src="https://img.shields.io/badge/UPDATE-10.12.2022-red.svg" alt="Update"></a>
+<a href="https://shields.io/"><img src="https://img.shields.io/badge/TARGET-amd64-brown.svg" alt="Target"></a></p>
+<img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/>
 <p>[<a href="#img-grav" target="_blank">Img.1</a>]: Grav CMS</p>
 <blockquote>
 <p>NOTE: To dynamically invert <a href="#SVG">[SVG]</a> image colors depending on actual theme, see [<a href="#lnk-8" target="_blank">8</a>] and [<a href="#lnk-9" target="_blank">9</a>].</p>
 </blockquote>
 <h2 id="index">Index</h2>
 <ul>
-<li><a href="#docker-image-for-grav-in-development">Docker Image for Grav (in development)</a>
+<li><a href="#docker-image-for-grav-cms">Docker Image for Grav CMS</a>
 <ul>
 <li><a href="#index">Index</a></li>
 <li><a href="#10-prerequisites">1.0 Prerequisites</a>
@@ -410,14 +414,15 @@ code {
 </ul>
 </li>
 <li><a href="#50-running-the-image-from-dockerfile">5.0 Running the image from Dockerfile</a></li>
-<li><a href="#60-abbreviation-reference-list">6.0 Abbreviation reference list</a></li>
-<li><a href="#70-image-reference-list">7.0 Image reference list</a></li>
-<li><a href="#80-link-reference-list">8.0 Link reference list</a></li>
+<li><a href="#60-license-agreement">6.0 License agreement</a></li>
+<li><a href="#70-abbreviation-reference-list">7.0 Abbreviation reference list</a></li>
+<li><a href="#80-image-reference-list">8.0 Image reference list</a></li>
+<li><a href="#90-link-reference-list">9.0 Link reference list</a></li>
 </ul>
 </li>
 </ul>
 <h2 id="10-prerequisites"><a href="#index">1.0 Prerequisites</a></h2>
-<p>This project is cloned from the official <a href="https://github.com/getgrav/docker-grav">GRAV GitHub</a> repository. If you want work with me, feel free to download it from <a href="https://github.com/giminni/docker-grav">my GitHub</a> repository.</p>
+<p>This project is cloned from the official <a href="https://github.com/getgrav/docker-grav">GRAV CMS GitHub</a> repository. If you want work with me, feel free to download it from <a href="https://github.com/giminni/docker-grav">my docker-grav GitHub</a> repository.</p>
 <p>It contains the original packages based on PHP 8.1:</p>
 <table>
 <thead>
@@ -566,7 +571,7 @@ variable is <code>${GRAV_HOME}</code>.</p>
 <p>NOTE: If you have installed all the above mentioned packages earlier, you can update it with:</p>
 <ul>
 <li><strong>brew upgrade <package-name>`</strong></li>
-<li><strong>getssl --upgrade</strong>.</li>
+<li><strong>getssl --upgrade</strong></li>
 </ul>
 </blockquote>
 <h2 id="20-project-structure"><a href="#index">2.0 Project structure</a></h2>
@@ -822,16 +827,18 @@ grav-run:  Help: grav-run.sh: Instantiate a docker container depending from some
 <li><code>&lt;grav-user=grav&gt;/&lt;grav-name=&lt;grav|grav-admin&gt;:&lt;grav-tag=latest|testing&gt;</code></li>
 </ul>
 <p>E.g. <code>grav/grav:latest</code> for production images or <code>grav/grav-admin:testing</code> for development images.</p>
-<h2 id="60-abbreviation-reference-list"><a href="#index">6.0 Abbreviation reference list</a></h2>
+<h2 id="60-license-agreement"><a href="#index">6.0 License agreement</a></h2>
+<p>docker-grav was released under <a href="/LICENSE">Apache License Version 2.0</a> by <a href="https://github.com/giminni/docker-grav">Giovanni Minniti</a>.</p>
+<h2 id="70-abbreviation-reference-list"><a href="#index">7.0 Abbreviation reference list</a></h2>
 <ul>
 <li>[EOL]: <a id="EOL" href="https://en.wikipedia.org/wiki/EOL">End of life</a></li>
 <li>[SVG]: <a id="SVG" href="https://en.wikipedia.org/wiki/SVG">Scalable Vector Graphics</a></li>
 </ul>
-<h2 id="70-image-reference-list"><a href="#index">7.0 Image reference list</a></h2>
+<h2 id="80-image-reference-list"><a href="#index">8.0 Image reference list</a></h2>
 <ul>
 <li>[Img.1]: <a id="img-grav" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg">Grav CMS</a> <a href="#SVG">[SVG]</a></li>
 </ul>
-<h2 id="80-link-reference-list"><a href="#index">8.0 Link reference list</a></h2>
+<h2 id="90-link-reference-list"><a href="#index">9.0 Link reference list</a></h2>
 <ul>
 <li>[1]: <a id="lnk-1" href="https://learn.getgrav.org/17">Grav v1.7 Documentation</a></li>
 <li>[2]: <a id="lnk-2" href="https://github.com/docker-library/official-images#multiple-architectures">Docker multiple architectures</a></li>
@@ -842,6 +849,8 @@ grav-run:  Help: grav-run.sh: Instantiate a docker container depending from some
 <li>[7]: <a id="lnk-7" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf">Visual Studio Code Windows Shortcuts</a></li>
 <li>[8]: <a id="lnk-8" href="https://www.ctrl.blog/entry/svg-embed-dark-mode.html">Embed SVG images in dark mode</a></li>
 <li>[9]: <a id="lnk-9" href="https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/">Colorize SVG background color with CSS filters</a></li>
+<li>[10]: <a id="lnk-10" href="https://github.com/Naereen/badges">GitHub badges examples with Shields.io</a></li>
+<li>[11]: <a id="lnk-11" href="https://shields.io/">Shields.io website</a></li>
 </ul>
 
 </body>

@@ -7,7 +7,7 @@
 [![TARGET](https://img.shields.io/badge/TARGET-amd64-brown.svg)](https://github/giminni/docker-grav)
 
 <img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/> \
-<a href="#img-1"><img src="https://img.shields.io/badge/-1-blue.svg" width="14"/> Grav CMS</a>
+<a href="#img-1"><img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> Grav CMS</a>
 ## Index
 
 - [Docker Image for Grav CMS](#docker-image-for-grav-cms)
@@ -45,7 +45,7 @@
 
 This project is cloned from the official [GRAV CMS GitHub](https://github.com/getgrav/docker-grav) repository. If you want work with me, feel free to download it from [my docker-grav GitHub](https://github.com/giminni/docker-grav) repository.
 
-It contains the original packages based on <a href="#PHP"><img src="https://img.shields.io/badge/-PHP-yellow.svg" width="26"/></a> 8.1:
+It contains the original packages based on <a href="#PHP"><img src="https://img.shields.io/badge/-PHP-brown.svg" width="26"/></a> 8.1:
 
 | ORIGINAL            | PACKAGES            |
 |:--------------------|:--------------------|
@@ -66,7 +66,7 @@ In addition other packages are included:
 | net-tools           | php8.1-pgsql        | tree (>= 1.8.0)     | git (>= 2.17)       |                     |
 | dropbear            | php8.1_xdebug       | jq (>= 1.5)         | getssl (>= 2.32)    |                     |
 
-> NOTE: Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not <a href="#EOL"><img src="https://img.shields.io/badge/-EOL-yellow.svg" width="26"/></a>, otherwise application security is highly impacted.
+> NOTE: Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not <a href="#EOL"><img src="https://img.shields.io/badge/-EOL-brown.svg" width="26"/></a>, otherwise application security is highly impacted.
 
 ### [1.1 Packages](#index)
 
@@ -278,7 +278,7 @@ To increase the overall security the privilege for required services (SSH, Cron 
 
 `CCache` and `rsync` are used to speedup the building of PHP extensions. At buildtime and before the PHP compilation is started, the external cache directory `${GRAV_HOME}/cache/.ccache` is read with `rsync` into the docker container `<CONTAINER_ROOT>/tmp/.ccache`. CCache will reroute the compiler call to this specific directory for faster compilation. Before all build artefacts are removed the cache directory `<CONTAINER_ROOT>/tmp/.ccache` is exported with `rsync` using incremental backup to preserve the compiled data for a next build  `${GRAV_HOME}/cache/.ccache`.
 
-> **Note:** Ensure that the <a href="#SSH"><img src="https://img.shields.io/badge/-SSH-yellow.svg" width="26"/></a> keys and user match the SSH keys of an external user on the local or remote host.
+> **Note:** Ensure that the <a href="#SSH"><img src="https://img.shields.io/badge/-SSH-brown.svg" width="26"/></a> keys and user match the SSH keys of an external user on the local or remote host.
 
 ### [3.9 Working with vscode locally or remotely](#index)
 
@@ -448,15 +448,15 @@ docker-grav was released under [Apache License Version 2.0](/LICENSE) by [Giovan
 
 ## [7.0 Abbreviation reference list](#index)
 
-<img src="https://img.shields.io/badge/-CSS-yellow.svg" width="26"/> <a id="CSS" href="https://en.wikipedia.org/wiki/CSS" target="_blank">Cascading Style Sheets</a> \
-<img src="https://img.shields.io/badge/-EOL-yellow.svg" width="26"/> <a id="EOL" href="https://en.wikipedia.org/wiki/EOL" target="_blank">End of Life</a> \
-<img src="https://img.shields.io/badge/-PHP-yellow.svg" width="26"/> <a id="PHP" href="https://en.wikipedia.org/wiki/PHP" target="_blank">PHP: Hypertext Preprocessor</a> \
-<img src="https://img.shields.io/badge/-SSH-yellow.svg" width="26"/> <a id="SSH" href="https://en.wikipedia.org/wiki/SSH" target="_blank">Secure Shell</a> \
-<img src="https://img.shields.io/badge/-SVG-yellow.svg" width="26"/> <a id="SVG" href="https://en.wikipedia.org/wiki/SVG" target="_blank">Scalable Vector Graphics</a>
+<img src="https://img.shields.io/badge/-CSS-brown.svg" width="26"/> <a id="CSS" href="https://en.wikipedia.org/wiki/CSS" target="_blank">Cascading Style Sheets</a> \
+<img src="https://img.shields.io/badge/-EOL-brown.svg" width="26"/> <a id="EOL" href="https://en.wikipedia.org/wiki/EOL" target="_blank">End of Life</a> \
+<img src="https://img.shields.io/badge/-PHP-brown.svg" width="26"/> <a id="PHP" href="https://en.wikipedia.org/wiki/PHP" target="_blank">PHP: Hypertext Preprocessor</a> \
+<img src="https://img.shields.io/badge/-SSH-brown.svg" width="26"/> <a id="SSH" href="https://en.wikipedia.org/wiki/SSH" target="_blank">Secure Shell</a> \
+<img src="https://img.shields.io/badge/-SVG-brown.svg" width="26"/> <a id="SVG" href="https://en.wikipedia.org/wiki/SVG" target="_blank">Scalable Vector Graphics</a>
 
 ## [8.0 Image reference list](#index)
 
-<img src="https://img.shields.io/badge/-1-blue.svg" width="14"/> <a id="img-1" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg" target="_blank">Grav CMS</a>
+<img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> <a id="img-1" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg" target="_blank">Grav CMS</a>
 
 ## [9.0 Link reference list](#index)
 
@@ -475,5 +475,5 @@ docker-grav was released under [Apache License Version 2.0](/LICENSE) by [Giovan
 ## [10.0 Notes](#index)
 
 - For further information or view, every badge or icon redirects to the proper reference list above.
-- To dynamically invert <a href="#SVG"><img src="https://img.shields.io/badge/-SVG-yellow.svg" width="26"/></a> image colors depending on actual theme with inline <a href="#CSS"><img src="https://img.shields.io/badge/-CSS-yellow.svg" width="26"/></a>, see <a href="#lnk-8"><img src="https://img.shields.io/badge/-8-red.svg" width="14"/></a> and <a href="#lnk-9"><img src="https://img.shields.io/badge/-9-red.svg" width="14"/></a>.
+- To dynamically invert <a href="#SVG"><img src="https://img.shields.io/badge/-SVG-brown.svg" width="26"/></a> image colors depending on actual theme with inline <a href="#CSS"><img src="https://img.shields.io/badge/-CSS-brown.svg" width="26"/></a>, see <a href="#lnk-8"><img src="https://img.shields.io/badge/-8-red.svg" width="14"/></a> and <a href="#lnk-9"><img src="https://img.shields.io/badge/-9-red.svg" width="14"/></a>.
 - To use generic badges in markdown files, see <a href="#lnk-10"><img src="https://img.shields.io/badge/-10-red.svg" width="18"/></a> and <a href="#lnk-11"><img src="https://img.shields.io/badge/-11-red.svg" width="18"/></a>.

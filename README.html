@@ -372,7 +372,7 @@ code {
 <a href="https://github/giminni/docker-grav"><img src="https://img.shields.io/badge/UPDATE-10.12.2022-green.svg" alt="UPDATE"></a> <br>
 <a href="https://github/giminni/docker-grav"><img src="https://img.shields.io/badge/TARGET-amd64-brown.svg" alt="TARGET"></a></p>
 <p><img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/> <br>
-<a href="#img-1"><img src="https://img.shields.io/badge/-1-blue.svg" width="14"/> Grav CMS</a></p>
+<a href="#img-1"><img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> Grav CMS</a></p>
 <h2 id="index">Index</h2>
 <ul>
 <li><a href="#docker-image-for-grav-cms">Docker Image for Grav CMS</a>
@@ -424,7 +424,7 @@ code {
 </blockquote>
 <h2 id="10-prerequisites"><a href="#index">1.0 Prerequisites</a></h2>
 <p>This project is cloned from the official <a href="https://github.com/getgrav/docker-grav">GRAV CMS GitHub</a> repository. If you want work with me, feel free to download it from <a href="https://github.com/giminni/docker-grav">my docker-grav GitHub</a> repository.</p>
-<p>It contains the original packages based on <a href="#PHP"><img src="https://img.shields.io/badge/-PHP-yellow.svg" width="26"/></a> 8.1:</p>
+<p>It contains the original packages based on <a href="#PHP"><img src="https://img.shields.io/badge/-PHP-brown.svg" width="26"/></a> 8.1:</p>
 <table>
 <thead>
 <tr>
@@ -505,7 +505,7 @@ code {
 </tbody>
 </table>
 <blockquote>
-<p>NOTE: Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not <a href="#EOL"><img src="https://img.shields.io/badge/-EOL-yellow.svg" width="26"/></a>, otherwise application security is highly impacted.</p>
+<p>NOTE: Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not <a href="#EOL"><img src="https://img.shields.io/badge/-EOL-brown.svg" width="26"/></a>, otherwise application security is highly impacted.</p>
 </blockquote>
 <h3 id="11-packages"><a href="#index">1.1 Packages</a></h3>
 <p>This project needs the following prerequisites on the HOST machine:</p>
@@ -694,7 +694,7 @@ variable is <code>${GRAV_HOME}</code>.</p>
 <h3 id="38-persisting-build-cache-using-ccache-and-rsync"><a href="#index">3.8 Persisting build cache using ccache and rsync</a></h3>
 <p><code>CCache</code> and <code>rsync</code> are used to speedup the building of PHP extensions. At buildtime and before the PHP compilation is started, the external cache directory <code>${GRAV_HOME}/cache/.ccache</code> is read with <code>rsync</code> into the docker container <code>&lt;CONTAINER_ROOT&gt;/tmp/.ccache</code>. CCache will reroute the compiler call to this specific directory for faster compilation. Before all build artefacts are removed the cache directory <code>&lt;CONTAINER_ROOT&gt;/tmp/.ccache</code> is exported with <code>rsync</code> using incremental backup to preserve the compiled data for a next build  <code>${GRAV_HOME}/cache/.ccache</code>.</p>
 <blockquote>
-<p><strong>Note:</strong> Ensure that the <a href="#SSH"><img src="https://img.shields.io/badge/-SSH-yellow.svg" width="26"/></a> keys and user match the SSH keys of an external user on the local or remote host.</p>
+<p><strong>Note:</strong> Ensure that the <a href="#SSH"><img src="https://img.shields.io/badge/-SSH-brown.svg" width="26"/></a> keys and user match the SSH keys of an external user on the local or remote host.</p>
 </blockquote>
 <h3 id="39-working-with-vscode-locally-or-remotely"><a href="#index">3.9 Working with vscode locally or remotely</a></h3>
 <p>To avoid direct access to the docker container a SSH user is fully provided and configured. The SSH server is listening on port <code>2222</code> to avoid collision with other primary SSH server.
@@ -831,13 +831,13 @@ grav-run:  Help: grav-run.sh: Instantiate a docker container depending from some
 <h2 id="60-license-agreement"><a href="#index">6.0 License agreement</a></h2>
 <p>docker-grav was released under <a href="/LICENSE">Apache License Version 2.0</a> by <a href="https://github.com/giminni/docker-grav">Giovanni Minniti</a>.</p>
 <h2 id="70-abbreviation-reference-list"><a href="#index">7.0 Abbreviation reference list</a></h2>
-<p><img src="https://img.shields.io/badge/-CSS-yellow.svg" width="26"/> <a id="CSS" href="https://en.wikipedia.org/wiki/CSS" target="_blank">Cascading Style Sheets</a> <br>
-<img src="https://img.shields.io/badge/-EOL-yellow.svg" width="26"/> <a id="EOL" href="https://en.wikipedia.org/wiki/EOL" target="_blank">End of Life</a> <br>
-<img src="https://img.shields.io/badge/-PHP-yellow.svg" width="26"/> <a id="PHP" href="https://en.wikipedia.org/wiki/PHP" target="_blank">PHP: Hypertext Preprocessor</a> <br>
-<img src="https://img.shields.io/badge/-SSH-yellow.svg" width="26"/> <a id="SSH" href="https://en.wikipedia.org/wiki/SSH" target="_blank">Secure Shell</a> <br>
-<img src="https://img.shields.io/badge/-SVG-yellow.svg" width="26"/> <a id="SVG" href="https://en.wikipedia.org/wiki/SVG" target="_blank">Scalable Vector Graphics</a></p>
+<p><img src="https://img.shields.io/badge/-CSS-brown.svg" width="26"/> <a id="CSS" href="https://en.wikipedia.org/wiki/CSS" target="_blank">Cascading Style Sheets</a> <br>
+<img src="https://img.shields.io/badge/-EOL-brown.svg" width="26"/> <a id="EOL" href="https://en.wikipedia.org/wiki/EOL" target="_blank">End of Life</a> <br>
+<img src="https://img.shields.io/badge/-PHP-brown.svg" width="26"/> <a id="PHP" href="https://en.wikipedia.org/wiki/PHP" target="_blank">PHP: Hypertext Preprocessor</a> <br>
+<img src="https://img.shields.io/badge/-SSH-brown.svg" width="26"/> <a id="SSH" href="https://en.wikipedia.org/wiki/SSH" target="_blank">Secure Shell</a> <br>
+<img src="https://img.shields.io/badge/-SVG-brown.svg" width="26"/> <a id="SVG" href="https://en.wikipedia.org/wiki/SVG" target="_blank">Scalable Vector Graphics</a></p>
 <h2 id="80-image-reference-list"><a href="#index">8.0 Image reference list</a></h2>
-<p><img src="https://img.shields.io/badge/-1-blue.svg" width="14"/> <a id="img-1" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg" target="_blank">Grav CMS</a></p>
+<p><img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> <a id="img-1" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg" target="_blank">Grav CMS</a></p>
 <h2 id="90-link-reference-list"><a href="#index">9.0 Link reference list</a></h2>
 <p><img src="https://img.shields.io/badge/-1-red.svg" width="14"/> <a id="lnk-1" href="https://learn.getgrav.org/17" target="_blank">Grav v1.7 Documentation</a> <br>
 <img src="https://img.shields.io/badge/-2-red.svg" width="14"/> <a id="lnk-2" href="https://github.com/docker-library/official-images#multiple-architectures" target="_blank">Docker multiple architectures</a> <br>
@@ -853,7 +853,7 @@ grav-run:  Help: grav-run.sh: Instantiate a docker container depending from some
 <h2 id="100-notes"><a href="#index">10.0 Notes</a></h2>
 <ul>
 <li>For further information or view, every badge or icon redirects to the proper reference list above.</li>
-<li>To dynamically invert <a href="#SVG"><img src="https://img.shields.io/badge/-SVG-yellow.svg" width="26"/></a> image colors depending on actual theme with inline <a href="#CSS"><img src="https://img.shields.io/badge/-CSS-yellow.svg" width="26"/></a>, see <a href="#lnk-8"><img src="https://img.shields.io/badge/-8-red.svg" width="14"/></a> and <a href="#lnk-9"><img src="https://img.shields.io/badge/-9-red.svg" width="14"/></a>.</li>
+<li>To dynamically invert <a href="#SVG"><img src="https://img.shields.io/badge/-SVG-brown.svg" width="26"/></a> image colors depending on actual theme with inline <a href="#CSS"><img src="https://img.shields.io/badge/-CSS-brown.svg" width="26"/></a>, see <a href="#lnk-8"><img src="https://img.shields.io/badge/-8-red.svg" width="14"/></a> and <a href="#lnk-9"><img src="https://img.shields.io/badge/-9-red.svg" width="14"/></a>.</li>
 <li>To use generic badges in markdown files, see <a href="#lnk-10"><img src="https://img.shields.io/badge/-10-red.svg" width="18"/></a> and <a href="#lnk-11"><img src="https://img.shields.io/badge/-11-red.svg" width="18"/></a>.</li>
 </ul>
 

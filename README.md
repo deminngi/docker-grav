@@ -444,7 +444,7 @@ E.g. `grav/grav:latest` for production images or `grav/grav-admin:testing` for d
 
 ## [6.0 License agreement](#index)
 
-docker-grav was released under [Apache License Version 2.0](/LICENSE) by [Giovanni Minniti](https://github.com/giminni/docker-grav).
+[docker-grav](https://github.com/giminni/docker-grav) was released under [Apache License Version 2.0](./LICENSE) by [Giovanni Minniti](https://github.com/giminni).
 
 ## [7.0 Abbreviation reference list](#index)
 

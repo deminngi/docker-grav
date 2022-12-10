@@ -378,7 +378,7 @@ code {
 <li><a href="#docker-image-for-grav-cms">Docker Image for Grav CMS</a>
 <ul>
 <li><a href="#index">Index</a></li>
-<li><a href="#10-prerequisites-">1.0 Prerequisites] </a>
+<li><a href="#10-prerequisites-">1.0 Prerequisites </a>
 <ul>
 <li><a href="#11-packages-">1.1 Packages </a></li>
 </ul>
@@ -395,7 +395,7 @@ code {
 <li><a href="#32-using-local-keyvalue-files-for-configuration-">3.2 Using local key/value files for configuration </a></li>
 <li><a href="#33-using-docker-multiarch-environment-">3.3 Using docker multiarch environment </a></li>
 <li><a href="#34-using-local-docker-cache-repository-">3.4 Using local docker cache repository </a></li>
-<li><a href="#35-handling-user-password-and-ssh-secrets-">[3.5 Handling user password and SSH secrets </a></li>
+<li><a href="#35-handling-user-password-and-ssh-secrets-">3.5 Handling user password and SSH secrets </a></li>
 <li><a href="#36-caching-docker-buildtime-">3.6 Caching docker buildtime </a></li>
 <li><a href="#37-running-services-as-non-root-user-">3.7 Running services as non-root user </a></li>
 <li><a href="#38-persisting-build-cache-using-ccache-and-rsync-">3.8 Persisting build cache using ccache and rsync </a></li>
@@ -422,7 +422,7 @@ code {
 <blockquote>
 <p>NOTE: This index list can be reached by clicking on every chapter or sub chapter header along this document.</p>
 </blockquote>
-<h2 id="10-prerequisites-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2224%22a">1.0 Prerequisites] <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a></h2>
+<h2 id="10-prerequisites-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2224%22a">1.0 Prerequisites <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a></h2>
 <p>This project is cloned from the official <a href="https://github.com/getgrav/docker-grav">GRAV <a href="#CMS"><img src="https://img.shields.io/badge/-CMS-brown.svg" width="26"/></a></a> GitHub repository. If you want work with me, feel free to download it from <a href="https://github.com/giminni/docker-grav">my docker-grav</a> GitHub repository.</p>
 <p>It contains the original packages based on <a href="#PHP"><img src="https://img.shields.io/badge/-PHP-brown.svg" width="26"/></a> 8.1:</p>
 <table>
@@ -686,7 +686,7 @@ variable is <code>${GRAV_HOME}</code>.</p>
 <h3 id="34-using-local-docker-cache-repository-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2218%22a">3.4 Using local docker cache repository <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a></h3>
 <p>In addition to the build and compile cache environment, there is another local directory <code>./${GRAV_HOME}/rootfs/*</code> that holds cached artefacts. This directory can be used to store for example the grav core zip files to reduce bandwith and avoid a lengthy download time from the internet.</p>
 <p>In this case store the <code>grav-admin.zip</code> file under <code>${GRAV_HOME}/rootfs/tmp</code>. If the name is correct the file will be inserted into the docker buildtime context and used instead of downloading the file from the internet.</p>
-<h3 id="35-handling-user-password-and-ssh-secrets-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2218%22a">[3.5 Handling user password and SSH secrets <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a></h3>
+<h3 id="35-handling-user-password-and-ssh-secrets-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2218%22a">3.5 Handling user password and SSH secrets <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a></h3>
 <p>The extended docker build features of <code>buildx</code> allows injecting sensitive data without leaving any history trace. The user password is generated externally with openssl <code>SHA512</code> encryption by a provided bash script <code>${GRAV_HOME}/bin/mkssh.sh</code>. The encrypted password is then stored under <code>${GRAV_HOME}/key/grav_pass.key</code> and injected into the container at buildtime.</p>
 <p>The same thing occures for the SSH private and public key. The key are stored under <code>${GRAV_HOME}/key/grav_rsa</code> and <code>${GRAV_HOME}/key/grav_rsa.pub</code> respectively.</p>
 <blockquote>

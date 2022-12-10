@@ -12,7 +12,7 @@
 
 - [Docker Image for Grav CMS](#docker-image-for-grav-cms)
   - [Index](#index)
-  - [1.0 Prerequisites\] ](#10-prerequisites-)
+  - [1.0 Prerequisites ](#10-prerequisites-)
     - [1.1 Packages ](#11-packages-)
   - [2.0 Project structure ](#20-project-structure-)
     - [2.1 Project features ](#21-project-features-)
@@ -22,7 +22,7 @@
     - [3.2 Using local key/value files for configuration ](#32-using-local-keyvalue-files-for-configuration-)
     - [3.3 Using docker multiarch environment ](#33-using-docker-multiarch-environment-)
     - [3.4 Using local docker cache repository ](#34-using-local-docker-cache-repository-)
-    - [\[3.5 Handling user password and SSH secrets ](#35-handling-user-password-and-ssh-secrets-)
+    - [3.5 Handling user password and SSH secrets ](#35-handling-user-password-and-ssh-secrets-)
     - [3.6 Caching docker buildtime ](#36-caching-docker-buildtime-)
     - [3.7 Running services as non-root user ](#37-running-services-as-non-root-user-)
     - [3.8 Persisting build cache using ccache and rsync ](#38-persisting-build-cache-using-ccache-and-rsync-)
@@ -41,7 +41,7 @@
 
 >NOTE: This index list can be reached by clicking on every chapter or sub chapter header along this document.
 
-## 1.0 Prerequisites] <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
+## 1.0 Prerequisites <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
 
 This project is cloned from the official [GRAV <a href="#CMS"><img src="https://img.shields.io/badge/-CMS-brown.svg" width="26"/></a>](https://github.com/getgrav/docker-grav) GitHub repository. If you want work with me, feel free to download it from [my docker-grav](https://github.com/giminni/docker-grav) GitHub repository.
 
@@ -263,7 +263,7 @@ In addition to the build and compile cache environment, there is another local d
 
 In this case store the `grav-admin.zip` file under `${GRAV_HOME}/rootfs/tmp`. If the name is correct the file will be inserted into the docker buildtime context and used instead of downloading the file from the internet.
 
-### [3.5 Handling user password and SSH secrets <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a>
+### 3.5 Handling user password and SSH secrets <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a>
 
 The extended docker build features of `buildx` allows injecting sensitive data without leaving any history trace. The user password is generated externally with openssl `SHA512` encryption by a provided bash script `${GRAV_HOME}/bin/mkssh.sh`. The encrypted password is then stored under `${GRAV_HOME}/key/grav_pass.key` and injected into the container at buildtime.
 

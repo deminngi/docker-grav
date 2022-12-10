@@ -16,7 +16,6 @@
     - [1.1 Packages ](#11-packages-)
   - [2.0 Project structure ](#20-project-structure-)
     - [2.1 Project features ](#21-project-features-)
-    - [2.2 Work in progress ](#22-work-in-progress-)
   - [3.0 Installation procedure ](#30-installation-procedure-)
     - [3.1 Installation checklist ](#31-installation-checklist-)
     - [3.2 Using local key/value files for configuration ](#32-using-local-keyvalue-files-for-configuration-)
@@ -37,7 +36,8 @@
   - [8.0 Abbreviation reference list ](#80-abbreviation-reference-list-)
   - [9.0 Image reference list ](#90-image-reference-list-)
   - [10.0 Link reference list ](#100-link-reference-list-)
-  - [11.0 Notes ](#110-notes-)
+  - [11.0 Todo  ](#110-todo--)
+  - [12.0 Notes ](#120-notes-)
 
 >NOTE: This index list can be reached by clicking on every chapter or sub chapter header along this document.
 
@@ -132,8 +132,8 @@ reload your shell with `source ${HOME}/.bashrc`, now the home path
 variable is `${GRAV_HOME}`.
 
 > **Note:**: If you have installed all the above mentioned packages earlier, you can update it with:
-> - **brew upgrade <package-name>`**
-> - **getssl --upgrade**
+> **brew upgrade <package-name>**
+> **getssl --upgrade**
 
 ## 2.0 Project structure <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
 
@@ -189,17 +189,6 @@ This project includes the following features:
 * Mount a docker named volume `grav_data` to a specific host directory `${GRAV_HOME}/data`
 * Create a repository `${GRAV_HOME}/rootfs/tmp/grav/core` for caching grav core packages
 * Use a bunch of local bash shared library `libgrav*` for all local bash scripts
-
-### 2.2 Work in progress <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a>
-
-* (WIP) Install PHP xdebug for vscode debugging over remote xdebug port
-* (WIP) Support letsencrypt SSL keys with getssl bash script
-* (TBD) Create a multistage dockerfile with base, compile and release stage
-* (TBD) Implement multiarch images wit QEMU static support
-* (TBD) Create an alpine container for smaller footprint
-* (TBD) Use NGINX instead of Apache web server
-* (TBD) Use buildx with docker composer file
-* (TBD) Ability to install grav skeletons and plugins
 
 ## 3.0 Installation procedure <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
 
@@ -478,7 +467,18 @@ E.g. `grav/grav:latest` for production images or `grav/grav-admin:testing` for d
 <img src="https://img.shields.io/badge/-10-red.svg" width="18"/> <a id="lnk-10" href="https://github.com/Naereen/badges" target="_blank">GitHub badges examples with Shields.io</a> \
 <img src="https://img.shields.io/badge/-11-red.svg" width="18"/> <a id="lnk-11" href="https://shields.io/" target="_blank">Shields.io website</a>
 
-## 11.0 Notes <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
+## 11.0 Todo  <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
+
+* (WIP) Install PHP xdebug for vscode debugging over remote xdebug port
+* (WIP) Support letsencrypt SSL keys with getssl bash script
+* (TBD) Create a multistage dockerfile with base, compile and release stage
+* (TBD) Implement multiarch images wit QEMU static support
+* (TBD) Create an alpine container for smaller footprint
+* (TBD) Use NGINX instead of Apache web server
+* (TBD) Use buildx with docker composer file
+* (TBD) Ability to install grav skeletons and plugins
+
+## 12.0 Notes <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
 
 - For further information or view, every badge or icon redirects to the proper reference list above.
 - To dynamically invert <a href="#SVG"><img src="https://img.shields.io/badge/-SVG-brown.svg" width="26"/></a> image colors depending on actual theme with inline <a href="#CSS"><img src="https://img.shields.io/badge/-CSS-brown.svg" width="26"/></a>, see <a href="#lnk-8"><img src="https://img.shields.io/badge/-8-red.svg" width="14"/></a> and <a href="#lnk-9"><img src="https://img.shields.io/badge/-9-red.svg" width="14"/></a>.

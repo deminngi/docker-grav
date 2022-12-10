@@ -386,7 +386,6 @@ code {
 <li><a href="#20-project-structure-">2.0 Project structure </a>
 <ul>
 <li><a href="#21-project-features-">2.1 Project features </a></li>
-<li><a href="#22-work-in-progress-">2.2 Work in progress </a></li>
 </ul>
 </li>
 <li><a href="#30-installation-procedure-">3.0 Installation procedure </a>
@@ -415,7 +414,8 @@ code {
 <li><a href="#80-abbreviation-reference-list-">8.0 Abbreviation reference list </a></li>
 <li><a href="#90-image-reference-list-">9.0 Image reference list </a></li>
 <li><a href="#100-link-reference-list-">10.0 Link reference list </a></li>
-<li><a href="#110-notes-">11.0 Notes </a></li>
+<li><a href="#110-todo--">11.0 Todo  </a></li>
+<li><a href="#120-notes-">12.0 Notes </a></li>
 </ul>
 </li>
 </ul>
@@ -569,11 +569,9 @@ Execute it with <code>${GRAV_HOME}/bin/mkinit.sh init</code>. After that
 reload your shell with <code>source ${HOME}/.bashrc</code>, now the home path
 variable is <code>${GRAV_HOME}</code>.</p>
 <blockquote>
-<p><strong>Note:</strong>: If you have installed all the above mentioned packages earlier, you can update it with:</p>
-<ul>
-<li><strong>brew upgrade <package-name>`</strong></li>
-<li><strong>getssl --upgrade</strong></li>
-</ul>
+<p><strong>Note:</strong>: If you have installed all the above mentioned packages earlier, you can update it with:
+<strong>brew upgrade <package-name></strong>
+<strong>getssl --upgrade</strong></p>
 </blockquote>
 <h2 id="20-project-structure-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2224%22a">2.0 Project structure <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a></h2>
 <p>The project consists of different directories, each one has a specific role:</p>
@@ -624,17 +622,6 @@ variable is <code>${GRAV_HOME}</code>.</p>
 <li>Mount a docker named volume <code>grav_data</code> to a specific host directory <code>${GRAV_HOME}/data</code></li>
 <li>Create a repository <code>${GRAV_HOME}/rootfs/tmp/grav/core</code> for caching grav core packages</li>
 <li>Use a bunch of local bash shared library <code>libgrav*</code> for all local bash scripts</li>
-</ul>
-<h3 id="22-work-in-progress-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2218%22a">2.2 Work in progress <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a></h3>
-<ul>
-<li>(WIP) Install PHP xdebug for vscode debugging over remote xdebug port</li>
-<li>(WIP) Support letsencrypt SSL keys with getssl bash script</li>
-<li>(TBD) Create a multistage dockerfile with base, compile and release stage</li>
-<li>(TBD) Implement multiarch images wit QEMU static support</li>
-<li>(TBD) Create an alpine container for smaller footprint</li>
-<li>(TBD) Use NGINX instead of Apache web server</li>
-<li>(TBD) Use buildx with docker composer file</li>
-<li>(TBD) Ability to install grav skeletons and plugins</li>
 </ul>
 <h2 id="30-installation-procedure-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2224%22a">3.0 Installation procedure <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a></h2>
 <ul>
@@ -856,7 +843,18 @@ grav-run:  Help: grav-run.sh: Instantiate a docker container depending from some
 <img src="https://img.shields.io/badge/-9-red.svg" width="14"/> <a id="lnk-9" href="https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/" target="_blank">Colorize SVG background color with CSS filters</a> <br>
 <img src="https://img.shields.io/badge/-10-red.svg" width="18"/> <a id="lnk-10" href="https://github.com/Naereen/badges" target="_blank">GitHub badges examples with Shields.io</a> <br>
 <img src="https://img.shields.io/badge/-11-red.svg" width="18"/> <a id="lnk-11" href="https://shields.io/" target="_blank">Shields.io website</a></p>
-<h2 id="110-notes-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2224%22a">11.0 Notes <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a></h2>
+<h2 id="110-todo-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2224%22a">11.0 Todo  <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a></h2>
+<ul>
+<li>(WIP) Install PHP xdebug for vscode debugging over remote xdebug port</li>
+<li>(WIP) Support letsencrypt SSL keys with getssl bash script</li>
+<li>(TBD) Create a multistage dockerfile with base, compile and release stage</li>
+<li>(TBD) Implement multiarch images wit QEMU static support</li>
+<li>(TBD) Create an alpine container for smaller footprint</li>
+<li>(TBD) Use NGINX instead of Apache web server</li>
+<li>(TBD) Use buildx with docker composer file</li>
+<li>(TBD) Ability to install grav skeletons and plugins</li>
+</ul>
+<h2 id="120-notes-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2224%22a">12.0 Notes <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a></h2>
 <ul>
 <li>For further information or view, every badge or icon redirects to the proper reference list above.</li>
 <li>To dynamically invert <a href="#SVG"><img src="https://img.shields.io/badge/-SVG-brown.svg" width="26"/></a> image colors depending on actual theme with inline <a href="#CSS"><img src="https://img.shields.io/badge/-CSS-brown.svg" width="26"/></a>, see <a href="#lnk-8"><img src="https://img.shields.io/badge/-8-red.svg" width="14"/></a> and <a href="#lnk-9"><img src="https://img.shields.io/badge/-9-red.svg" width="14"/></a>.</li>

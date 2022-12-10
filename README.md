@@ -131,8 +131,8 @@ Execute it with `${GRAV_HOME}/bin/mkinit.sh init`. After that
 reload your shell with `source ${HOME}/.bashrc`, now the home path
 variable is `${GRAV_HOME}`.
 
-> **Note:**: If you have installed all the above mentioned packages earlier, you can update it with:
-> **brew upgrade <package-name>**
+> **Note:**: If you have installed all the above mentioned packages earlier, you can update it with: \
+> **brew upgrade <package-name>** \
 > **getssl --upgrade**
 
 ## 2.0 Project structure <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>

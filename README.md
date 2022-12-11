@@ -66,12 +66,15 @@ In addition other packages are included:
 | net-tools           | php8.1-pgsql        | tree (>= 1.8.0)     | git (>= 2.17)       |                     |
 | dropbear            | php8.1_xdebug       | jq (>= 1.5)         | getssl (>= 2.32)    |                     |
 
-> **Note:**: Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not <a href="#EOL"><img src="https://img.shields.io/badge/-EOL-brown.svg" width="26"/></a>, otherwise application security is highly impacted.
+> **Note:** Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not <a href="#EOL"><img src="https://img.shields.io/badge/-EOL-brown.svg" width="26"/></a>, otherwise application security is highly impacted.
+
+> **Note:** All script files are currently based on **bash** and not **zsh**.
 
 ### 1.1 Packages <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a>
 
 This project needs the following prerequisites on the HOST machine:
 
+* Install or use at least bash >= 3.x
 * Install at least uuid -v4 >= 1.5
   (macOS: brew install ossp-uuid)
   (Ubuntu: sudo apt install uuid)
@@ -96,7 +99,7 @@ This project needs the following prerequisites on the HOST machine:
   (macOS: brew install --cask docker)
 * Install at least docker buildx plugin >= 0.5.0
   (See <https://docs.docker.com/buildx/working-with-buildx>)
-   **Note**: It is already included in a recent version of docker.
+   **Note:** It is already included in a recent version of docker.
 * Install at least getssl >= 2.32
   (See <https://github.com/srvrco/getssl>)
   (macOS: `curl --silent https://raw.githubusercontent.com/srvrco/getssl/master/getssl > getssl && chmod 700 getssl && sudo mv getssl /usr/local/bin`)
@@ -119,54 +122,53 @@ This project needs the following prerequisites on the HOST machine:
 * Install vscode for development
   (macOS: brew install vscode)
 * Add the following vscode extensions:
-        - Docker
-        - EditorConfig for VS Code
-        - Remote - WSL
-        - Remote - Containers
-        - Remote - SSH
-        - Remote - SSH:Editing
+  - Docker
+  - EditorConfig for VS Code
+  - Remote - WSL
+  - Remote - Containers
+  - Remote - SSH
+  - Remote - SSH:Editing
 
 This prerequisites are checked automatically with `mkinit.sh init`.
 Execute it with `${GRAV_HOME}/bin/mkinit.sh init`. After that
 reload your shell with `source ${HOME}/.bashrc`, now the home path
 variable is `${GRAV_HOME}`.
 
-> **Note:**: If you have installed all the above mentioned packages earlier, you can update it with: \
-> **brew upgrade <package-name>** \
-> **getssl --upgrade**
+> **Note:**: If you have installed all the above mentioned packages earlier, you can update it with: **brew upgrade <package-name>** and/or **getssl --upgrade**
 
 ## 2.0 Project structure <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
 
 The project consists of different directories, each one has a specific role:
 
 ```bash
-${GRAV_HOME}
-|-- [ ]  assets            |-- (Directory for assets)
-|-- [ ]  bin               |-- (Directory for bash scripts)
-|-- [*]  cache             |-- (Directory for cache files) 
-|-- [*]  cfg               |-- (Directory for config files)
-|-- [*]  cert              |-- (Directory for certificate files)
-|-- [*]  data              |-- (Directory for data files)  
-|-- [ ]  docker            |-- (Directory for docker files)
-|-- [*]  key               |-- (Directory for SSH & user keys)
-|-- [ ]  lib               |-- (Library for shell scripts)
-|-- [*]  rootfs            |-- (Repository for packages and files)
-|-- [*]  .context
-|-- [ ]  .dockerignore
-|-- [ ]  .editorconfig
-|-- [ ]  .gitattributes
-|-- [ ]  .gitignore
-|-- [ ]  Dockerfile -> ./docker/Dockerfile
-|-- [ ]  LICENSE
-|-- [ ]  README.html
-|-- [ ]  README.md
-|-- [ ]  README.md
-`-- [ ]  TODO.md
+[ ]  ${GRAV_HOME}
+[ ]  |-- assets            |-- (Directory for various assets)
+[ ]  │   └── svg           |-- (Directory for SVG images)
+[ ]  |-- bin               |-- (Directory for bash scripts)
+[*]  |-- cache             |-- (Directory for cache files) 
+[*]  |-- cfg               |-- (Directory for config files)
+[*]  |-- cert              |-- (Directory for certificate files)
+[*]  |-- data              |-- (Directory for data files)  
+[ ]  |-- docker            |-- (Directory for docker files)
+[*]  |-- key               |-- (Directory for SSH & user keys)
+[ ]  |-- lib               |-- (Library for shell scripts)
+[*]  |-- rootfs            |-- (Repository for packages and files)
+[*]  |-- .context
+[ ]  |-- .dockerignore
+[ ]  |-- .editorconfig
+[ ]  |-- .gitattributes
+[ ]  |-- .gitignore
+[ ]  |-- Dockerfile -> ./docker/Dockerfile
+[ ]  |-- LICENSE
+[ ]  |-- README.html
+[ ]  |-- README.md
+[ ]  |-- README.md
+[ ]  `-- TODO.md
 ```
 
 > **Note:** The files in directories marked with `[*]` are not uploaded to Git. They must be build with the appropriate `<PROJECT_ROOT>/bin/grav-mk*` script.
->
-> To initialize the project, execute `./bin/grav-mkinit.sh init` first from the `${GRAV_HOME}` directory, then activate it with `source ${HOME}/.bashrc`. From this moment you can also use the short form without appending `.sh`, e.g. `grav-mkinit`.
+
+> **Note:** To initialize the project, execute `./bin/grav-mkinit.sh init` first from the `${GRAV_HOME}` directory, then activate it with `source ${HOME}/.bashrc`. From this moment you can also use the short form without appending `.sh`, e.g. `grav-mkinit`.
 
 ### 2.1 Project features <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a>
 
@@ -195,7 +197,7 @@ This project includes the following features:
 * Install the prerequisite software (See [1.0 Prerequisites](#10-prerequisites))
 * Download the project with git `git clone https://github.com/giminni/docker-grav`
 * Change into the current project directory with `cd docker-grav`
-* `docker-grav` is now your `<PROJECT_HOME>` directory
+  **Note:** `docker-grav` is now your `<PROJECT_HOME>` directory
 * Initialize the project with `<PROJECT_HOME>/bin/grav-mkinit.sh init`
 * Reload bash shell with `source ${HOME}/.bashrc`
 * Set the current grav core production and development package version with `grav-core.sh set all`, older grav core packages version can be set manually, for example with `grav-core.sh set 1.6.0` for production package version or `grav-core.sh set 1.7.0-rc.19` for development package version.
@@ -240,7 +242,7 @@ E.g. `.config.bin` file in `${GRAV_HOME}/cfg` directory:
 GRAV_BIN="${GRAV_HOME}/bin"
 ```
 
-> **Note:** Every configuration files can be changed manually by expert user or use the handy local bash scripts that starts with `${GRAV_HOME}/bin/grav-mk*.sh` for novice user.
+> **Note:** Every configuration files can be changed manually by expert user or execute the local bash scripts that starts with `${GRAV_HOME}/bin/grav-mk*.sh` if you are a novice user.
 
 ### 3.3 Using docker multiarch environment <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a>
 
@@ -422,13 +424,12 @@ grav-run:  Info: grav-run.sh grav grav-admin latest n data
 grav-run:  Help: grav-run.sh: Instantiate a docker container depending from some entered arguments. (See Note, Info and Args)
 ```
 
-IF you installed the `grav-admin` package then point the browser to `http://localhost:9080/admin` and create a user account, otherwise point the browser to `http://localhost:9080/` directly.
+IF you installed the `grav-admin` package then point the browser to `http://localhost:8080/admin` and create a user account, otherwise point the browser to `http://localhost:8080/` directly.
 
-> **Note:** The following external <-> internal docker ports are exposed:
->
-> * `2222 <-> 22`: for SSH external host access using the named user
-> * `9080 <-> 80`: for HTTP external host access
-> * `9443 <-> 443`: for HTTPS external host access (WIP)
+> **Note:** The following external <-> internal docker ports are exposed: \
+> `2222 <-> 22`: for SSH external host access using the named user \
+> `8080 <-> 80`: for HTTP external host access \
+> `8443 <-> 443`: for HTTPS external host access (WIP)
 
 The docker image has the following scheme:
 

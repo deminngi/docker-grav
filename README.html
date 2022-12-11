@@ -505,11 +505,15 @@ code {
 </tbody>
 </table>
 <blockquote>
-<p><strong>Note:</strong>: Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not <a href="#EOL"><img src="https://img.shields.io/badge/-EOL-brown.svg" width="26"/></a>, otherwise application security is highly impacted.</p>
+<p><strong>Note:</strong> Please ensure that the PHP base docker image is an actual version (e.g. php8.1) and not <a href="#EOL"><img src="https://img.shields.io/badge/-EOL-brown.svg" width="26"/></a>, otherwise application security is highly impacted.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong> All script files are currently based on <strong>bash</strong> and not <strong>zsh</strong>.</p>
 </blockquote>
 <h3 id="11-packages-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2218%22a">1.1 Packages <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a></h3>
 <p>This project needs the following prerequisites on the HOST machine:</p>
 <ul>
+<li>Install or use at least bash &gt;= 3.x</li>
 <li>Install at least uuid -v4 &gt;= 1.5
 (macOS: brew install ossp-uuid)
 (Ubuntu: sudo apt install uuid)
@@ -534,7 +538,7 @@ or Docker Desktop for Mac which includes docker-ce<br>
 (macOS: brew install --cask docker)</li>
 <li>Install at least docker buildx plugin &gt;= 0.5.0
 (See <a href="https://docs.docker.com/buildx/working-with-buildx">https://docs.docker.com/buildx/working-with-buildx</a>)
-<strong>Note</strong>: It is already included in a recent version of docker.</li>
+<strong>Note:</strong> It is already included in a recent version of docker.</li>
 <li>Install at least getssl &gt;= 2.32
 (See <a href="https://github.com/srvrco/getssl">https://github.com/srvrco/getssl</a>)
 (macOS: <code>curl --silent https://raw.githubusercontent.com/srvrco/getssl/master/getssl &gt; getssl &amp;&amp; chmod 700 getssl &amp;&amp; sudo mv getssl /usr/local/bin</code>)</li>
@@ -557,50 +561,54 @@ or Docker Desktop for Mac which includes docker-ce<br>
 <li>Install vscode for development
 (macOS: brew install vscode)</li>
 <li>Add the following vscode extensions:
-- Docker
-- EditorConfig for VS Code
-- Remote - WSL
-- Remote - Containers
-- Remote - SSH
-- Remote - SSH:Editing</li>
+<ul>
+<li>Docker</li>
+<li>EditorConfig for VS Code</li>
+<li>Remote - WSL</li>
+<li>Remote - Containers</li>
+<li>Remote - SSH</li>
+<li>Remote - SSH:Editing</li>
+</ul>
+</li>
 </ul>
 <p>This prerequisites are checked automatically with <code>mkinit.sh init</code>.
 Execute it with <code>${GRAV_HOME}/bin/mkinit.sh init</code>. After that
 reload your shell with <code>source ${HOME}/.bashrc</code>, now the home path
 variable is <code>${GRAV_HOME}</code>.</p>
 <blockquote>
-<p><strong>Note:</strong>: If you have installed all the above mentioned packages earlier, you can update it with: <br>
-<strong>brew upgrade <package-name></strong> <br>
-<strong>getssl --upgrade</strong></p>
+<p><strong>Note:</strong>: If you have installed all the above mentioned packages earlier, you can update it with: <strong>brew upgrade <package-name></strong> and/or <strong>getssl --upgrade</strong></p>
 </blockquote>
 <h2 id="20-project-structure-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2224%22a">2.0 Project structure <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a></h2>
 <p>The project consists of different directories, each one has a specific role:</p>
-<pre class="hljs"><code><div><span class="hljs-variable">${GRAV_HOME}</span>
-|-- [ ]  assets            |-- (Directory <span class="hljs-keyword">for</span> assets)
-|-- [ ]  bin               |-- (Directory <span class="hljs-keyword">for</span> bash scripts)
-|-- [*]  cache             |-- (Directory <span class="hljs-keyword">for</span> cache files) 
-|-- [*]  cfg               |-- (Directory <span class="hljs-keyword">for</span> config files)
-|-- [*]  cert              |-- (Directory <span class="hljs-keyword">for</span> certificate files)
-|-- [*]  data              |-- (Directory <span class="hljs-keyword">for</span> data files)  
-|-- [ ]  docker            |-- (Directory <span class="hljs-keyword">for</span> docker files)
-|-- [*]  key               |-- (Directory <span class="hljs-keyword">for</span> SSH &amp; user keys)
-|-- [ ]  lib               |-- (Library <span class="hljs-keyword">for</span> shell scripts)
-|-- [*]  rootfs            |-- (Repository <span class="hljs-keyword">for</span> packages and files)
-|-- [*]  .context
-|-- [ ]  .dockerignore
-|-- [ ]  .editorconfig
-|-- [ ]  .gitattributes
-|-- [ ]  .gitignore
-|-- [ ]  Dockerfile -&gt; ./docker/Dockerfile
-|-- [ ]  LICENSE
-|-- [ ]  README.html
-|-- [ ]  README.md
-|-- [ ]  README.md
-`-- [ ]  TODO.md
+<pre class="hljs"><code><div>[ ]  <span class="hljs-variable">${GRAV_HOME}</span>
+[ ]  |-- assets            |-- (Directory <span class="hljs-keyword">for</span> various assets)
+[ ]  │   └── svg           |-- (Directory <span class="hljs-keyword">for</span> SVG images)
+[ ]  |-- bin               |-- (Directory <span class="hljs-keyword">for</span> bash scripts)
+[*]  |-- cache             |-- (Directory <span class="hljs-keyword">for</span> cache files) 
+[*]  |-- cfg               |-- (Directory <span class="hljs-keyword">for</span> config files)
+[*]  |-- cert              |-- (Directory <span class="hljs-keyword">for</span> certificate files)
+[*]  |-- data              |-- (Directory <span class="hljs-keyword">for</span> data files)  
+[ ]  |-- docker            |-- (Directory <span class="hljs-keyword">for</span> docker files)
+[*]  |-- key               |-- (Directory <span class="hljs-keyword">for</span> SSH &amp; user keys)
+[ ]  |-- lib               |-- (Library <span class="hljs-keyword">for</span> shell scripts)
+[*]  |-- rootfs            |-- (Repository <span class="hljs-keyword">for</span> packages and files)
+[*]  |-- .context
+[ ]  |-- .dockerignore
+[ ]  |-- .editorconfig
+[ ]  |-- .gitattributes
+[ ]  |-- .gitignore
+[ ]  |-- Dockerfile -&gt; ./docker/Dockerfile
+[ ]  |-- LICENSE
+[ ]  |-- README.html
+[ ]  |-- README.md
+[ ]  |-- README.md
+[ ]  `-- TODO.md
 </div></code></pre>
 <blockquote>
 <p><strong>Note:</strong> The files in directories marked with <code>[*]</code> are not uploaded to Git. They must be build with the appropriate <code>&lt;PROJECT_ROOT&gt;/bin/grav-mk*</code> script.</p>
-<p>To initialize the project, execute <code>./bin/grav-mkinit.sh init</code> first from the <code>${GRAV_HOME}</code> directory, then activate it with <code>source ${HOME}/.bashrc</code>. From this moment you can also use the short form without appending <code>.sh</code>, e.g. <code>grav-mkinit</code>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong> To initialize the project, execute <code>./bin/grav-mkinit.sh init</code> first from the <code>${GRAV_HOME}</code> directory, then activate it with <code>source ${HOME}/.bashrc</code>. From this moment you can also use the short form without appending <code>.sh</code>, e.g. <code>grav-mkinit</code>.</p>
 </blockquote>
 <h3 id="21-project-features-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2218%22a">2.1 Project features <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a></h3>
 <p>This project includes the following features:</p>
@@ -627,8 +635,8 @@ variable is <code>${GRAV_HOME}</code>.</p>
 <ul>
 <li>Install the prerequisite software (See <a href="#10-prerequisites">1.0 Prerequisites</a>)</li>
 <li>Download the project with git <code>git clone https://github.com/giminni/docker-grav</code></li>
-<li>Change into the current project directory with <code>cd docker-grav</code></li>
-<li><code>docker-grav</code> is now your <code>&lt;PROJECT_HOME&gt;</code> directory</li>
+<li>Change into the current project directory with <code>cd docker-grav</code>
+<strong>Note:</strong> <code>docker-grav</code> is now your <code>&lt;PROJECT_HOME&gt;</code> directory</li>
 <li>Initialize the project with <code>&lt;PROJECT_HOME&gt;/bin/grav-mkinit.sh init</code></li>
 <li>Reload bash shell with <code>source ${HOME}/.bashrc</code></li>
 <li>Set the current grav core production and development package version with <code>grav-core.sh set all</code>, older grav core packages version can be set manually, for example with <code>grav-core.sh set 1.6.0</code> for production package version or <code>grav-core.sh set 1.7.0-rc.19</code> for development package version.</li>
@@ -666,7 +674,7 @@ variable is <code>${GRAV_HOME}</code>.</p>
 <pre class="hljs"><code><div>GRAV_BIN=<span class="hljs-string">"<span class="hljs-variable">${GRAV_HOME}</span>/bin"</span>
 </div></code></pre>
 <blockquote>
-<p><strong>Note:</strong> Every configuration files can be changed manually by expert user or use the handy local bash scripts that starts with <code>${GRAV_HOME}/bin/grav-mk*.sh</code> for novice user.</p>
+<p><strong>Note:</strong> Every configuration files can be changed manually by expert user or execute the local bash scripts that starts with <code>${GRAV_HOME}/bin/grav-mk*.sh</code> if you are a novice user.</p>
 </blockquote>
 <h3 id="33-using-docker-multiarch-environment-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2218%22a">3.3 Using docker multiarch environment <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="18"/></a></h3>
 <p>Using the extended docker build features of <code>buildx</code> this project is prepared for multiarch images. That means it uses one name for different target architectures <code>linux/amd64, linux/arm64, linux/armv7, ...</code>. Currently only the <code>linux/amd64</code> architecture is supported.</p>
@@ -806,14 +814,12 @@ grav-run:  Info: grav-run.sh grav grav-admin latest n data
 
 grav-run:  Help: grav-run.sh: Instantiate a docker container depending from some entered arguments. (See Note, Info and Args)
 </div></code></pre>
-<p>IF you installed the <code>grav-admin</code> package then point the browser to <code>http://localhost:9080/admin</code> and create a user account, otherwise point the browser to <code>http://localhost:9080/</code> directly.</p>
+<p>IF you installed the <code>grav-admin</code> package then point the browser to <code>http://localhost:8080/admin</code> and create a user account, otherwise point the browser to <code>http://localhost:8080/</code> directly.</p>
 <blockquote>
-<p><strong>Note:</strong> The following external &lt;-&gt; internal docker ports are exposed:</p>
-<ul>
-<li><code>2222 &lt;-&gt; 22</code>: for SSH external host access using the named user</li>
-<li><code>9080 &lt;-&gt; 80</code>: for HTTP external host access</li>
-<li><code>9443 &lt;-&gt; 443</code>: for HTTPS external host access (WIP)</li>
-</ul>
+<p><strong>Note:</strong> The following external &lt;-&gt; internal docker ports are exposed: <br>
+<code>2222 &lt;-&gt; 22</code>: for SSH external host access using the named user <br>
+<code>8080 &lt;-&gt; 80</code>: for HTTP external host access <br>
+<code>8443 &lt;-&gt; 443</code>: for HTTPS external host access (WIP)</p>
 </blockquote>
 <p>The docker image has the following scheme:</p>
 <ul>

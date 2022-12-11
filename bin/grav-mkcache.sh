@@ -64,6 +64,9 @@ function main() {
          "${_GRAV_ARG2}"
    fi
 
+   # Check if docker is running
+   libgrav_common::check_docker
+
    libgrav_mk::mk_cache \
       "${_GRAV_NAME}" \
       "${_GRAV_CACHE}"

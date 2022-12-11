@@ -70,6 +70,9 @@ function main() {
          "${_GRAV_ARG4}"
    fi
 
+   # Check if docker is running
+   libgrav_common::check_docker
+
    libgrav_mk::mk_ssh \
       "${_GRAV_EMAIL}" \
       "${_GRAV_TYPE}" \

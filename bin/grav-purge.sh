@@ -61,6 +61,9 @@ function main() {
          "${_GRAV_ARG1}"
    fi
    
+   # Check if docker is running
+   libgrav_common::check_docker
+
    libgrav_docker::purge \
       "${_GRAV_NAME}"
    

@@ -73,6 +73,9 @@ function main() {
          "${_GRAV_ARG1}"
    fi
    
+   # Check if docker is running
+   libgrav_common::check_docker
+
    libgrav_init::mk_init \
       "${_GRAV_CMD}" \
       "${_UUID_MIN}" \

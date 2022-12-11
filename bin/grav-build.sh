@@ -87,6 +87,9 @@ function main() {
          "${_GRAV_ARG6}"
    fi
 
+   # Check if docker is running
+   libgrav_common::check_docker
+
    # Check if essential configuration settings are done
    if [[ ! -f "${CFG_DIR}"/.config.pass ]] || [[ ! -f $(cat "${CFG_DIR}"/.config.pass | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: User and password not provided.\nPlease run ${BIN_DIR}/grav-mkpass.sh first..." "${NAME}";
       elif [[ ! -f "${CFG_DIR}"/.config.ssh ]] || [[ ! -f $(cat "${CFG_DIR}"/.config.ssh | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: SSH files not provided.\nPlease run ${BIN_DIR}/grav-mkssh.sh first..." "${NAME}";

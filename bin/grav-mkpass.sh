@@ -69,6 +69,9 @@ function main() {
          "${_GRAV_ARG3}"
    fi
 
+   # Check if docker is running
+   libgrav_common::check_docker
+
    if [ ${#_GRAV_SECS} -lt ${_GRAV_LEN} ]; then libgrav_common::error 2 "Error: Password must contain at least ${_GRAV_LEN} chars!" "${NAME}"; fi
 
    libgrav_mk::mk_pass \

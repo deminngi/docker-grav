@@ -67,6 +67,9 @@ function main() {
          "${_GRAV_ARG3}"
    fi
 
+   # Check if docker is running
+   libgrav_common::check_docker
+
    case "${_GRAV_CMD}" in
       "set")
          libgrav_core::set_core \

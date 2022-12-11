@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 
 #
+# Public: check_docker() function for checking if docker is running
+#
+function libgrav_common::check_docker() { #-# Public: check_docker() function for checking if docker is running
+   local _RC="0"
+   
+   if (! docker stats --no-stream ); then
+      libgrav_common::error $? "Error: Docker is not running" "${NAME}"
+   fi
+
+   return ${_RC}
+}
+
+#
 # Public: check_prereq() function for checking essential prerequisites
 #
 function libgrav_common::check_prereq() { #-# Public: check_prereq() function for checking essential prerequisites
@@ -44,7 +57,7 @@ function libgrav_common::check_prereq() { #-# Public: check_prereq() function fo
    elif [ $(libgrav_common::version "${_GETSSL_NOW}") -lt $(libgrav_common::version ${_GETSSL_MIN}) ]; then 
       libgrav_common::error 2 "Error: Required version of getssl is not available or met.\nPlease install at least required version: ${_GETSSL_MIN}." "${NAME}"
    elif [ $(libgrav_common::version "${_WGET_NOW}") -lt $(libgrav_common::version ${_WGET_MIN}) ]; then 
-      libgrav_common::error 2 "Error: Required version of getssl is not available or met.\nPlease install at least required version: ${_WGET_MIN}." "${NAME}"
+      libgrav_common::error 2 "Error: Required version of wget is not available or met.\nPlease install at least required version: ${_WGET_MIN}." "${NAME}"
    fi
 
    # Set global directory variables
@@ -80,7 +93,7 @@ function libgrav_common::error() { #-# Public: error() function for all shell sc
 # Public: init() function for setting all directory variables globally.
 #
 function libgrav_common::init() { #-# Public: init() function for setting all directory variables globally.
-#
+
    # Remove enclosing double quotes
    if [[ -e "${CTX_DIR}/.config.root" ]]; then ROOT_DIR="$(cat ${CTX_DIR}/.config.root | tr -d '"' | cut -d'=' -f2)"; fi
    if [[ -e "${CTX_DIR}/.config.cache" ]]; then CACHE_DIR="$(cat ${CTX_DIR}/.config.cache | tr -d '"' | cut -d'=' -f2)"; fi

@@ -6,7 +6,7 @@
 [![UPDATE](https://img.shields.io/badge/UPDATE-10.12.2022-green.svg)](https://github/giminni/docker-grav) \
 [![TARGET](https://img.shields.io/badge/TARGET-amd64-blueviolet.svg)](https://github/giminni/docker-grav)
 
-<img src="./assets/svg/Grav_logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/> \
+<img src="./assets/svg/grav-logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/> \
 <a href="#img-1"><img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> Grav CMS</a>
 ## Index
 
@@ -452,7 +452,7 @@ E.g. `grav/grav:latest` for production images or `grav/grav-admin:testing` for d
 
 ## 9.0 Image reference list <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
 
-<img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> <a id="img-1" title="Grav CMS" alt="Grav CMS" href="./assets/svg/Grav_logo.svg" target="_blank">Grav CMS</a>
+<img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> <a id="img-1" title="Grav CMS" alt="Grav CMS" href="./assets/svg/grav-logo.svg" target="_blank">Grav CMS</a>
 
 ## 10.0 Link reference list <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
 

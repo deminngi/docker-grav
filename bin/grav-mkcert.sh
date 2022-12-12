@@ -46,10 +46,10 @@ function main() {
    local _GRAV_CERT="${_ARGV[2]:-"${HOME_DIR}/${_GRAV_NAME}"}"
 
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} vol-name|help [vol-cert]"
+   local _GRAV_ARGS=" Args: ${CMD} mkcert-cmd [vol-cert]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1:   vol-name: any(#)|help(*) - (#=cert) or (*=help)"
-   local _GRAV_ARG2=" Arg2: [vol-cert]: any(*)         - (*=${CERT_DIR-""})"
+   local _GRAV_ARG1=" Arg1: mkcert-cmd: vol-name - (#=cert) or (*=help)"
+   local _GRAV_ARG2=" Arg2: [vol-cert]: any(*)   - (*=${CERT_DIR-""})"
    local _GRAV_INFO=" Info: ${CMD} cert ${CERT_DIR-""}"
    local _GRAV_HELP=" Help: ${CMD}: Create the required named certificate volume depending from some entered arguments. (See Note, Info and Args)"
 

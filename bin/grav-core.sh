@@ -47,9 +47,9 @@ function main() {
    local _GRAV_NAME="${_ARGV[3]:-"grav"}"
 
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} core-cmd|help [core-ver] [img-name]"
+   local _GRAV_ARGS=" Args: ${CMD} core-cmd [core-ver] [img-name]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1: core-cmd: set|get|help             - (*=help)"
+   local _GRAV_ARG1=" Arg1:   core-cmd: set|get|help           - (*=help)"
    local _GRAV_ARG2=" Arg2: [core-ver]: all|prod|dev|X.Y.Z|(*) - (*=prod)"
    local _GRAV_ARG3=" Arg3: [img-name]: grav-admin|grav|(*)    - (*=grav)"
    local _GRAV_INFO=" Info: ${CMD} set prod grav"

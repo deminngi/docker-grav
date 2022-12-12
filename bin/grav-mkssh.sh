@@ -48,12 +48,12 @@ function main() {
    local _GRAV_SSH="${_ARGV[4]:-${KEY_DIR}/grav_${_GRAV_TYPE}}"
 
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} user_email|help [key-type] [key-len] [key-file]"
+   local _GRAV_ARGS=" Args: ${CMD} mkssh-cmd [key-type] [key-len] [key-file]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1: user-email: any(#)|help(*) - (#=email-address) or (*=help)"
-   local _GRAV_ARG2=" Arg2: [key-type]: rsa|dsa|ecdsa  - (*=rsa)"
-   local _GRAV_ARG3=" Arg3:  [key-len]: 2048-8192      - (*=4096)"
-   local _GRAV_ARG4=" Arg4: [key-file]: any(*)         - (*=${KEY_DIR}/grav_<grav-keytype>)"
+   local _GRAV_ARG1=" Arg1:  mkssh-cmd: user-email    - (#=email-address) or (*=help)"
+   local _GRAV_ARG2=" Arg2: [key-type]: rsa|dsa|ecdsa - (*=rsa)"
+   local _GRAV_ARG3=" Arg3:  [key-len]: 2048-8192     - (*=4096)"
+   local _GRAV_ARG4=" Arg4: [key-file]: any(*)        - (*=${KEY_DIR}/grav_<grav-keytype>)"
    local _GRAV_INFO=" Info: ${CMD} grav@example.com rsa 4096 ${KEY_DIR}/grav_rsa"
    local _GRAV_HELP=" Help: ${CMD}: Create the required user SSH keys depending from some entered arguments. (See Note, Info and Args)"
 

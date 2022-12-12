@@ -50,9 +50,9 @@ function main() {
    local _GRAV_SHELL="${_ARGV[2]-"${SHELL}"}"
    
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} img-name|help [shell-type]"
+   local _GRAV_ARGS=" Args: ${CMD} shell-cmd [shell-type]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1: [img-name]: any(#)|help(#)  - (#=grav) or (*=help)"
+   local _GRAV_ARG1=" Arg1:  shell-cmd: img-name        - (#=grav) or (*=help)"
    local _GRAV_ARG2=" Arg2: shell-type: (*)|sh|ash|bash - (*=<current-shell>)"
    local _GRAV_INFO=" Info: ${CMD} grav bash"
    local _GRAV_HELP=" Help: ${CMD}: Open a named shell into the running container depending from some entered arguments. (See Note, Info and Args)"

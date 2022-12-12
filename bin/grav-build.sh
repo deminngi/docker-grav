@@ -61,9 +61,9 @@ function main() {
    local _GRAV_URL="https://getgrav.org/download/${_GRAV_KIND}/${_GRAV_NAME}"
 
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} user-name|help [img-name] [tag-name] [pass-file] [priv-file] [pub-file]"
+   local _GRAV_ARGS=" Args: ${CMD} build-cmd [img-name] [tag-name] [pass-file] [priv-file] [pub-file]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1:   user-name: any(#)|help(*)  - (#=grav) or (*=help)"
+   local _GRAV_ARG1=" Arg1:   build-cmd: user-name       - (#=grav) or (*=help)"
    local _GRAV_ARG2=" Arg2:  [img-name]: grav|grav-admin - (*=grav)"
    local _GRAV_ARG3=" Arg3:  [tag-name]: latest|testing  - (*=latest)"
    local _GRAV_ARG4=" Arg4: [pass-file]: any(*)          - (*=<PROJECT_HOME>/key/grav_pass.key)"

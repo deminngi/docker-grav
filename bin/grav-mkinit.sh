@@ -47,9 +47,9 @@ function main() {
    local _GRAV_CMD="${_ARGV[1]-""}"
 
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} grav-cmd|help"
+   local _GRAV_ARGS=" Args: ${CMD} mkinit-cmd"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1: grav-cmd: init(#)|help(+) - (#=init) or (*=help)"
+   local _GRAV_ARG1=" Arg1: mkinit-cmd: init - (#=init) or (*=help)"
    local _GRAV_INFO=" Info: ${CMD} init"
    local _GRAV_HELP=" Help: ${CMD}: Use the 'init' command to initialize the project environment with context files under the ${CFG_DIR} directory. (See Note, Info and Args)"
 

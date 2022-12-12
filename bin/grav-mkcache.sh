@@ -46,10 +46,10 @@ function main() {
    local _GRAV_CACHE="${_ARGV[2]:-"${HOME_DIR}/${_GRAV_NAME}"}"
 
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} cache-name|help [cache-file]"
+   local _GRAV_ARGS=" Args: ${CMD} mkcache-cmd [cache-file]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1:   cache-name: any(#)|help(*) - (#=cache) or (*=help)"
-   local _GRAV_ARG2=" Arg2: [cache-file]: any(*)         - (*=${CACHE_DIR-""})"
+   local _GRAV_ARG1=" Arg1:  mkcache-cmd: cache-name - (#=cache) or (*=help)"
+   local _GRAV_ARG2=" Arg2: [cache-file]: any(*)     - (*=${CACHE_DIR-""})"
    local _GRAV_INFO=" Info: ${CMD} cache ${CACHE_DIR-""}"
    local _GRAV_HELP=" Help: ${CMD}: Create the required cache directory depending from some entered arguments. (See Note, Info and Args)"
 

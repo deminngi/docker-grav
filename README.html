@@ -371,7 +371,7 @@ code {
 <a href="https://github/giminni/docker-grav"><img src="https://img.shields.io/badge/PHPVER-8.1.x-magenta.svg" alt="PHPVER"></a> <a href="https://github/giminni/docker-grav"><img src="https://img.shields.io/badge/APACHE-2.4.x-magenta.svg" alt="APACHE"></a> <a href="https://github/giminni/docker-grav"><img src="https://img.shields.io/badge/CMSVER-1.7.x-magenta.svg" alt="CMSVER"></a> <br>
 <a href="https://github/giminni/docker-grav"><img src="https://img.shields.io/badge/UPDATE-10.12.2022-green.svg" alt="UPDATE"></a> <br>
 <a href="https://github/giminni/docker-grav"><img src="https://img.shields.io/badge/TARGET-amd64-blueviolet.svg" alt="TARGET"></a></p>
-<p><img src="./assets/svg/grav-logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/> <br>
+<p><img src="./media/svg/grav-logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/> <br>
 <a href="#img-1"><img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> Grav CMS</a></p>
 <h2 id="index">Index</h2>
 <ul>
@@ -581,8 +581,6 @@ variable is <code>${GRAV_HOME}</code>.</p>
 <h2 id="20-project-structure-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2224%22a">2.0 Project structure <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a></h2>
 <p>The project consists of different directories, each one has a specific role:</p>
 <pre class="hljs"><code><div>[ ]  <span class="hljs-variable">${GRAV_HOME}</span>
-[ ]  |-- assets            |-- (Directory <span class="hljs-keyword">for</span> various assets)
-[ ]  │   └── svg           |-- (Directory <span class="hljs-keyword">for</span> SVG images)
 [ ]  |-- bin               |-- (Directory <span class="hljs-keyword">for</span> bash scripts)
 [*]  |-- cache             |-- (Directory <span class="hljs-keyword">for</span> cache files) 
 [*]  |-- cfg               |-- (Directory <span class="hljs-keyword">for</span> config files)
@@ -590,8 +588,10 @@ variable is <code>${GRAV_HOME}</code>.</p>
 [*]  |-- data              |-- (Directory <span class="hljs-keyword">for</span> data files)  
 [ ]  |-- docker            |-- (Directory <span class="hljs-keyword">for</span> docker files)
 [*]  |-- key               |-- (Directory <span class="hljs-keyword">for</span> SSH &amp; user keys)
-[ ]  |-- lib               |-- (Library <span class="hljs-keyword">for</span> shell scripts)
-[*]  |-- rootfs            |-- (Repository <span class="hljs-keyword">for</span> packages and files)
+[ ]  |-- lib               |-- (Directory <span class="hljs-keyword">for</span> shell libraries)
+[ ]  |-- media             |-- (Directory <span class="hljs-keyword">for</span> various media)
+[ ]  │   └── svg           |-- (Directory <span class="hljs-keyword">for</span> SVG images)
+[*]  |-- rootfs            |-- (Directory <span class="hljs-keyword">for</span> packages and files)
 [*]  |-- .context
 [ ]  |-- .dockerignore
 [ ]  |-- .editorconfig
@@ -836,7 +836,7 @@ grav-run:  Help: grav-run.sh: Instantiate a docker container depending from some
 <img src="https://img.shields.io/badge/-SSH-brown.svg" width="26"/> <a id="SSH" href="https://en.wikipedia.org/wiki/SSH" target="_blank">Secure Shell</a> <br>
 <img src="https://img.shields.io/badge/-SVG-brown.svg" width="26"/> <a id="SVG" href="https://en.wikipedia.org/wiki/SVG" target="_blank">Scalable Vector Graphics</a></p>
 <h2 id="90-image-reference-list-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2224%22a">9.0 Image reference list <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a></h2>
-<p><img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> <a id="img-1" title="Grav CMS" alt="Grav CMS" href="./assets/svg/grav-logo.svg" target="_blank">Grav CMS</a></p>
+<p><img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> <a id="img-1" title="Grav CMS" alt="Grav CMS" href="./media/svg/grav-logo.svg" target="_blank">Grav CMS</a></p>
 <h2 id="100-link-reference-list-a-href%22index%22img-src%22httpsimgshieldsiobadge--bluesvg%22-width%2224%22a">10.0 Link reference list <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a></h2>
 <p><img src="https://img.shields.io/badge/-1-red.svg" width="14"/> <a id="lnk-1" href="https://learn.getgrav.org/17" target="_blank">Grav v1.7 Documentation</a> <br>
 <img src="https://img.shields.io/badge/-2-red.svg" width="14"/> <a id="lnk-2" href="https://github.com/docker-library/official-images#multiple-architectures" target="_blank">Docker multiple architectures</a> <br>

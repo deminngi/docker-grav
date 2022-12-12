@@ -6,7 +6,7 @@
 [![UPDATE](https://img.shields.io/badge/UPDATE-10.12.2022-green.svg)](https://github/giminni/docker-grav) \
 [![TARGET](https://img.shields.io/badge/TARGET-amd64-blueviolet.svg)](https://github/giminni/docker-grav)
 
-<img src="./assets/svg/grav-logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/> \
+<img src="./media/svg/grav-logo.svg" alt="Grav CMS" title="Grav CMS" width="25%"/> \
 <a href="#img-1"><img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> Grav CMS</a>
 ## Index
 
@@ -142,8 +142,6 @@ The project consists of different directories, each one has a specific role:
 
 ```bash
 [ ]  ${GRAV_HOME}
-[ ]  |-- assets            |-- (Directory for various assets)
-[ ]  │   └── svg           |-- (Directory for SVG images)
 [ ]  |-- bin               |-- (Directory for bash scripts)
 [*]  |-- cache             |-- (Directory for cache files) 
 [*]  |-- cfg               |-- (Directory for config files)
@@ -151,8 +149,10 @@ The project consists of different directories, each one has a specific role:
 [*]  |-- data              |-- (Directory for data files)  
 [ ]  |-- docker            |-- (Directory for docker files)
 [*]  |-- key               |-- (Directory for SSH & user keys)
-[ ]  |-- lib               |-- (Library for shell scripts)
-[*]  |-- rootfs            |-- (Repository for packages and files)
+[ ]  |-- lib               |-- (Directory for shell libraries)
+[ ]  |-- media             |-- (Directory for various media)
+[ ]  │   └── svg           |-- (Directory for SVG images)
+[*]  |-- rootfs            |-- (Directory for packages and files)
 [*]  |-- .context
 [ ]  |-- .dockerignore
 [ ]  |-- .editorconfig
@@ -452,7 +452,7 @@ E.g. `grav/grav:latest` for production images or `grav/grav-admin:testing` for d
 
 ## 9.0 Image reference list <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
 
-<img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> <a id="img-1" title="Grav CMS" alt="Grav CMS" href="./assets/svg/grav-logo.svg" target="_blank">Grav CMS</a>
+<img src="https://img.shields.io/badge/-1-blueviolet.svg" width="14"/> <a id="img-1" title="Grav CMS" alt="Grav CMS" href="./media/svg/grav-logo.svg" target="_blank">Grav CMS</a>
 
 ## 10.0 Link reference list <a href="#index"><img src="https://img.shields.io/badge/-^-blue.svg" width="24"/></a>
 

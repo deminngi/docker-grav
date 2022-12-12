@@ -98,6 +98,11 @@ function main() {
             "${_GRAV_NAME}"
       ;;
 
+      "help")
+         echo "GIO!"
+         exit 1
+      ;;
+
       *)
       ;;
    esac
@@ -110,7 +115,7 @@ function main() {
 # #### #
 # MAIN #
 # #### #
-main ${ARGC} "${ARGV[@]}"
+main ${ARGC} "${ARGV[@]:-""}"
 
 RC=$?
 

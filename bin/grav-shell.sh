@@ -83,7 +83,7 @@ function main() {
 # #### #
 # MAIN #
 # #### #
-main ${ARGC} "${ARGV[@]}"
+main ${ARGC} "${ARGV[@]:-""}"
 
 RC=$?
 

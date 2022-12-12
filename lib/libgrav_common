@@ -6,7 +6,7 @@
 function libgrav_common::check_docker() { #-# Public: check_docker() function for checking if docker is running
    local _RC="0"
    
-   if (! docker stats --no-stream ); then
+   if ( ! docker stats --no-stream 1>/dev/null 2>&1 ); then
       libgrav_common::error $? "Error: Docker is not running" "${NAME}"
    fi
 

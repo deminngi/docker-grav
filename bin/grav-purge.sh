@@ -46,10 +46,10 @@ function main() {
    local _GRAV_NAME="${_ARGV[2]-""}"
 
    local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
-   local _GRAV_ARGS=" Args: ${CMD} purge-cmd"
+   local _GRAV_ARGS=" Args: ${CMD} purge-cmd image-name"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
    local _GRAV_ARG1=" Arg1: mkpurge-cmd: purge|help - (*=help)"
-   local _GRAV_ARG2=" Arg2: imange-name: any        - (#=grav|grav-admin)"
+   local _GRAV_ARG2=" Arg2:  image-name: any        - (#=grav|grav-admin)"
    local _GRAV_INFO=" Info: ${CMD} make grav"
    local _GRAV_HELP=" Help: ${CMD}: Purge all generated docker artefacts depending from some entered arguments. (See Note, Info and Args)"
 

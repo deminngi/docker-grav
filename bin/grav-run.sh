@@ -51,7 +51,7 @@ function main() {
    local _GRAV_CERT="${_ARGV[7]:-"grav_cert"}"
    
    local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
-   local _GRAV_ARGS=" Args: ${CMD} run-cmd [img-name] [tag-name] [run-mode] [vol-data] [vol-cert]"
+   local _GRAV_ARGS=" Args: ${CMD} run-cmd user-name [img-name] [tag-name] [run-mode] [vol-data] [vol-cert]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
    local _GRAV_ARG1=" Arg1:    run-cmd: run|help - (*=help)"
    local _GRAV_ARG2=" Arg2:  user-name: any      - (#=grav)"

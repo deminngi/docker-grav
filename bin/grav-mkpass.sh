@@ -50,7 +50,7 @@ function main() {
    local _GRAV_LEN=11
 
    local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
-   local _GRAV_ARGS=" Args: ${CMD} mkpass-cmd [user-name] [pass-file]"
+   local _GRAV_ARGS=" Args: ${CMD} mkpass-cmd user-pass [user-name] [pass-file]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
    local _GRAV_ARG1=" Arg1:  mkpass-cmd: make|help - (*=help)"
    local _GRAV_ARG2=" Arg2:   user-pass: any       - (#=minimum length: 11 chars)"

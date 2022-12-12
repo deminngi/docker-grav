@@ -55,7 +55,7 @@ function main() {
    libgrav_common::check_docker
 
    # If no arguments given show help otherwise usage
-   if [ ${_ARGV[1]} != "help" ]; then 
+   if [ ${_ARGC} -lt 1 ] && [ ${_ARGV[1]} != "help" ]; then 
       libgrav_common::usage 1 \
          "${_GRAV_TEXT}" \
          "${_GRAV_ARGS}" \

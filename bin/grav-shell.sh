@@ -50,15 +50,19 @@ function main() {
    local _GRAV_SHELL="${_ARGV[2]-"${SHELL}"}"
    
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} img-name [shell-type]"
+   local _GRAV_ARGS=" Args: ${CMD} img-name|help [shell-type]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1: [img-name]: any|(#)         - (#=grav)"
+   local _GRAV_ARG1=" Arg1: [img-name]: any(#)|help(#)  - (#=grav) or (*=help)"
    local _GRAV_ARG2=" Arg2: shell-type: (*)|sh|ash|bash - (*=<current-shell>)"
    local _GRAV_INFO=" Info: ${CMD} grav bash"
    local _GRAV_HELP=" Help: ${CMD}: Open a named shell into the running container depending from some entered arguments. (See Note, Info and Args)"
 
-   if [ ${_ARGC} -lt 1 ]; then 
-      libgrav_common::usage 1 \
+   # Check if docker is running
+   libgrav_common::check_docker
+
+   # If no arguments given show help otherwise usage
+   if [ ${_ARGV[1]} != "help" ]; then 
+   libgrav_common::usage 1 \
          "${_GRAV_TEXT}" \
          "${_GRAV_ARGS}" \
          "${_GRAV_NOTE}" \
@@ -68,8 +72,21 @@ function main() {
          "${_GRAV_ARG2}"
    fi
    
-   # Check if docker is running
-   libgrav_common::check_docker
+   case "${_GRAV_NAME}" in
+      "help")
+      libgrav_common::usage 1 \
+         " Help: This arguments are currently valid!" \
+         "${_GRAV_ARGS}" \
+         "${_GRAV_NOTE}" \
+         "${_GRAV_INFO}" \
+         "${_GRAV_HELP}" \
+         "${_GRAV_ARG1}" \
+         "${_GRAV_ARG2}"
+      ;;
+
+      *)
+      ;;
+   esac
 
    libgrav_docker::shell \
       "${_GRAV_NAME}" \
@@ -83,7 +100,7 @@ function main() {
 # #### #
 # MAIN #
 # #### #
-main ${ARGC} "${ARGV[@]:-""}"
+main ${ARGC} "${ARGV[@]:-"help"}"
 
 RC=$?
 

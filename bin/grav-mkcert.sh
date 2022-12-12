@@ -46,14 +46,18 @@ function main() {
    local _GRAV_CERT="${_ARGV[2]:-"${HOME_DIR}/${_GRAV_NAME}"}"
 
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} vol-name [vol-cert]"
+   local _GRAV_ARGS=" Args: ${CMD} vol-name|help [vol-cert]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1:   vol-name: any|(#) - (#=cert)"
-   local _GRAV_ARG2=" Arg2: [vol-cert]: any|(*) - (*=${CERT_DIR-""})"
+   local _GRAV_ARG1=" Arg1:   vol-name: any(#)|help(*) - (#=cert) or (*=help)"
+   local _GRAV_ARG2=" Arg2: [vol-cert]: any(*)         - (*=${CERT_DIR-""})"
    local _GRAV_INFO=" Info: ${CMD} cert ${CERT_DIR-""}"
    local _GRAV_HELP=" Help: ${CMD}: Create the required named certificate volume depending from some entered arguments. (See Note, Info and Args)"
 
-   if [ ${_ARGC} -lt 1 ]; then 
+   # Check if docker is running
+   libgrav_common::check_docker
+
+   # If no arguments given show help otherwise usage
+   if [ ${_ARGV[1]} != "help" ]; then 
        libgrav_common::usage 1 \
          "${_GRAV_TEXT}" \
          "${_GRAV_ARGS}" \
@@ -64,8 +68,21 @@ function main() {
          "${_GRAV_ARG2}"
    fi
 
-   # Check if docker is running
-   libgrav_common::check_docker
+   case "${_GRAV_NAME}" in
+      "help")
+      libgrav_common::usage 1 \
+         " Help: This arguments are currently valid!" \
+         "${_GRAV_ARGS}" \
+         "${_GRAV_NOTE}" \
+         "${_GRAV_INFO}" \
+         "${_GRAV_HELP}" \
+         "${_GRAV_ARG1}" \
+         "${_GRAV_ARG2}"
+      ;;
+
+      *)
+      ;;
+   esac
 
    libgrav_mk::mk_cert \
       "${_GRAV_NAME}" \
@@ -79,7 +96,7 @@ function main() {
 # #### #
 # MAIN #
 # #### #
-main ${ARGC} "${ARGV[@]:-""}"
+main ${ARGC} "${ARGV[@]:-"help"}"
 
 RC=$?
 

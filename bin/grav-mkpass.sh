@@ -49,15 +49,19 @@ function main() {
    local _GRAV_LEN=11
 
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} user-pass [user-name] [pass-file]"
+   local _GRAV_ARGS=" Args: ${CMD} user-pass|help [user-name] [pass-file]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1:   user-pass: any|(#) - (#=minimum length: 11 chars)"
-   local _GRAV_ARG2=" Arg2: [user-name]: any|(*) - (*=<current-user>,#=grav)"
-   local _GRAV_ARG3=" Arg3: [pass-file]: any|(*) - (*=${KEY_DIR}/grav_pass.key]"
+   local _GRAV_ARG1=" Arg1:   user-pass: any(#)|help(*) - (#=minimum length: 11 chars) or (*=help)"
+   local _GRAV_ARG2=" Arg2: [user-name]: any(*)         - (*=<current-user>,#=grav)"
+   local _GRAV_ARG3=" Arg3: [pass-file]: any(*)         - (*=${KEY_DIR}/grav_pass.key]"
    local _GRAV_INFO=" Info: ${CMD} my-secret-pass grav ${KEY_DIR}/grav_pass.key"
    local _GRAV_HELP=" Help: ${CMD}: Create the required user password depending from some entered arguments. (See Note, Info and Args)"
 
-   if [ ${_ARGC} -lt 1 ]; then 
+   # Check if docker is running
+   libgrav_common::check_docker
+
+   # If no arguments given show help otherwise usage
+   if [ ${_ARGV[1]} != "help" ]; then 
       libgrav_common::usage 1 \
          "${_GRAV_TEXT}" \
          "${_GRAV_ARGS}" \
@@ -69,8 +73,22 @@ function main() {
          "${_GRAV_ARG3}"
    fi
 
-   # Check if docker is running
-   libgrav_common::check_docker
+   case "${_GRAV_SECS}" in
+      "help")
+      libgrav_common::usage 1 \
+         " Help: This arguments are currently valid!" \
+         "${_GRAV_ARGS}" \
+         "${_GRAV_NOTE}" \
+         "${_GRAV_INFO}" \
+         "${_GRAV_HELP}" \
+         "${_GRAV_ARG1}" \
+         "${_GRAV_ARG2}" \
+         "${_GRAV_ARG3}"
+      ;;
+
+      *)
+      ;;
+   esac
 
    if [ ${#_GRAV_SECS} -lt ${_GRAV_LEN} ]; then libgrav_common::error 2 "Error: Password must contain at least ${_GRAV_LEN} chars!" "${NAME}"; fi
 
@@ -87,7 +105,7 @@ function main() {
 # #### #
 # MAIN #
 # #### #
-main ${ARGC} "${ARGV[@]:-""}"
+main ${ARGC} "${ARGV[@]:-"help"}"
 
 RC=$?
 

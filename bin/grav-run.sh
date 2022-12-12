@@ -50,18 +50,22 @@ function main() {
    local _GRAV_CERT="${_ARGV[6]:-"grav_cert"}"
    
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} user-name [img-name] [tag-name] [run-mode] [vol-data] [vol-cert]"
+   local _GRAV_ARGS=" Args: ${CMD} user-name|help [img-name] [tag-name] [run-mode] [vol-data] [vol-cert]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1:  user-name: any|(#) - (#=grav)"
-   local _GRAV_ARG2=" Arg2: [img-name]: any|(*) - (*=grav-admin)"
-   local _GRAV_ARG3=" Arg3: [tag-name]: any|(*) - (*=latest)"
-   local _GRAV_ARG4=" Arg4: [run-mode]: n|d|(*) - (*=(n)ormal,(d)debug)"
-   local _GRAV_ARG5=" Arg5: [vol-data]: any|(*) - (*=grav_data)"
-   local _GRAV_ARG6=" Arg6: [vol-cert]: any|(*) - (*=grav_cert)"
+   local _GRAV_ARG1=" Arg1:  user-name: any(#)|help|(*) - (#=grav) or (*=help)"
+   local _GRAV_ARG2=" Arg2: [img-name]: any(*)          - (*=grav-admin)"
+   local _GRAV_ARG3=" Arg3: [tag-name]: any(*)          - (*=latest)"
+   local _GRAV_ARG4=" Arg4: [run-mode]: n|d(*)          - (*=(n)ormal,(d)debug)"
+   local _GRAV_ARG5=" Arg5: [vol-data]: any(*)          - (*=grav_data)"
+   local _GRAV_ARG6=" Arg6: [vol-cert]: any(*)          - (*=grav_cert)"
    local _GRAV_INFO=" Info: ${CMD} grav grav-admin latest n data cert"
    local _GRAV_HELP=" Help: ${CMD}: Instantiate a docker container depending from some entered arguments. (See Note, Info and Args)"
 
-   if [ ${_ARGC} -lt 1 ]; then 
+   # Check if docker is running
+   libgrav_common::check_docker
+
+   # If no arguments given show help otherwise usage
+   if [ ${_ARGV[1]} != "help" ]; then 
       libgrav_common::usage 1 \
          "${_GRAV_TEXT}" \
          "${_GRAV_ARGS}" \
@@ -76,8 +80,25 @@ function main() {
          "${_GRAV_ARG6}"
    fi
 
-   # Check if docker is running
-   libgrav_common::check_docker
+   case "${_GRAV_USER}" in
+         "help")
+         libgrav_common::usage 1 \
+            " Help: This arguments are currently valid!" \
+            "${_GRAV_ARGS}" \
+            "${_GRAV_NOTE}" \
+            "${_GRAV_INFO}" \
+            "${_GRAV_HELP}" \
+            "${_GRAV_ARG1}" \
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}" \
+            "${_GRAV_ARG4}" \
+            "${_GRAV_ARG5}" \
+            "${_GRAV_ARG6}"
+      ;;
+
+      *)
+      ;;
+   esac
 
    # Check if essential configuration files exists
    if [[ ! -f "${CFG_DIR}"/.config.pass ]] || [[ ! -f $(cat "${CFG_DIR}"/.config.pass | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: User and password not provided.\nPlease run '${BIN_DIR}'/grav-mkpass.sh first..." "${NAME}";
@@ -108,7 +129,7 @@ function main() {
 # #### #
 # MAIN #
 # #### #
-main ${ARGC} "${ARGV[@]:-""}"
+main ${ARGC} "${ARGV[@]:-"help"}"
 
 RC=$?
 

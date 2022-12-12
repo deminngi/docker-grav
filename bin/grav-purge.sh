@@ -45,13 +45,17 @@ function main() {
    local _GRAV_NAME="${_ARGV[1]-""}"
 
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} img-name"
+   local _GRAV_ARGS=" Args: ${CMD} img-name|help"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1: img-name: any|(#) - (#=grav-admin)"
+   local _GRAV_ARG1=" Arg1: img-name: any(#)|help(#) - (#=grav-admin) or (*=help)"
    local _GRAV_INFO=" Info: ${CMD} grav"
    local _GRAV_HELP=" Help: ${CMD}: Purge all generated docker artefacts depending from some entered arguments. (See Note, Info and Args)"
 
-   if [ ${_ARGC} -lt 1 ]; then 
+   # Check if docker is running
+   libgrav_common::check_docker
+
+   # If no arguments given show help otherwise usage
+   if [ ${_ARGV[1]} != "help" ]; then 
       libgrav_common::usage 1 \
          "${_GRAV_TEXT}" \
          "${_GRAV_ARGS}" \
@@ -61,8 +65,20 @@ function main() {
          "${_GRAV_ARG1}"
    fi
    
-   # Check if docker is running
-   libgrav_common::check_docker
+   case "${_GRAV_NAME}" in
+      "help")
+      libgrav_common::usage 1 \
+         " Help: This arguments are currently valid!" \
+         "${_GRAV_ARGS}" \
+         "${_GRAV_NOTE}" \
+         "${_GRAV_INFO}" \
+         "${_GRAV_HELP}" \
+         "${_GRAV_ARG1}"
+      ;;
+
+      *)
+      ;;
+   esac
 
    libgrav_docker::purge \
       "${_GRAV_NAME}"
@@ -75,7 +91,7 @@ function main() {
 # #### #
 # MAIN #
 # #### #
-main ${ARGC} "${ARGV[@]:-""}"
+main ${ARGC} "${ARGV[@]:-"help"}"
 
 RC=$?
 

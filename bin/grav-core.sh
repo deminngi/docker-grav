@@ -47,15 +47,19 @@ function main() {
    local _GRAV_NAME="${_ARGV[3]:-"grav"}"
 
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} core-cmd [core-ver] [img-name]"
+   local _GRAV_ARGS=" Args: ${CMD} core-cmd|help [core-ver] [img-name]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1: core-cmd: set|get"
+   local _GRAV_ARG1=" Arg1: core-cmd: set|get|help             - (*=help)"
    local _GRAV_ARG2=" Arg2: [core-ver]: all|prod|dev|X.Y.Z|(*) - (*=prod)"
    local _GRAV_ARG3=" Arg3: [img-name]: grav-admin|grav|(*)    - (*=grav)"
    local _GRAV_INFO=" Info: ${CMD} set prod grav"
    local _GRAV_HELP=" Help: ${CMD}: Set or download grav core packages depending from some entered arguments. (See Note, Info and Args)"
 
-   if [ ${_ARGC} -lt 1 ]; then 
+   # Check if docker is running
+   libgrav_common::check_docker
+
+   # If no arguments given show help otherwise usage
+   if [ ${_ARGV[1]} != "help" ]; then 
       libgrav_common::usage 1 \
          "${_GRAV_TEXT}" \
          "${_GRAV_ARGS}" \
@@ -66,9 +70,6 @@ function main() {
          "${_GRAV_ARG2}" \
          "${_GRAV_ARG3}"
    fi
-
-   # Check if docker is running
-   libgrav_common::check_docker
 
    case "${_GRAV_CMD}" in
       "set")
@@ -99,8 +100,15 @@ function main() {
       ;;
 
       "help")
-         echo "GIO!"
-         exit 1
+         libgrav_common::usage 1 \
+            " Help: This arguments are currently valid!" \
+            "${_GRAV_ARGS}" \
+            "${_GRAV_NOTE}" \
+            "${_GRAV_INFO}" \
+            "${_GRAV_HELP}" \
+            "${_GRAV_ARG1}" \
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}"
       ;;
 
       *)
@@ -115,7 +123,7 @@ function main() {
 # #### #
 # MAIN #
 # #### #
-main ${ARGC} "${ARGV[@]:-""}"
+main ${ARGC} "${ARGV[@]:-"help"}"
 
 RC=$?
 

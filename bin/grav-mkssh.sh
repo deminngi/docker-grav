@@ -48,17 +48,21 @@ function main() {
    local _GRAV_SSH="${_ARGV[4]:-${KEY_DIR}/grav_${_GRAV_TYPE}}"
 
    local _GRAV_TEXT="Error: Arguments are not provided!"
-   local _GRAV_ARGS=" Args: ${CMD} user_email [key-type] [key-len] [key-file]"
+   local _GRAV_ARGS=" Args: ${CMD} user_email|help [key-type] [key-len] [key-file]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1: user-email: any|(#)       - (#=email-address)"
-   local _GRAV_ARG2=" Arg2: [key-type]: rsa|dsa|ecdsa - (*=rsa)"
-   local _GRAV_ARG3=" Arg3:  [key-len]: 2048-8192     - (*=4096)"
-   local _GRAV_ARG4=" Arg4: [key-file]: any|(*)       - (*=${KEY_DIR}/grav_<grav-keytype>)"
+   local _GRAV_ARG1=" Arg1: user-email: any(#)|help(*) - (#=email-address) or (*=help)"
+   local _GRAV_ARG2=" Arg2: [key-type]: rsa|dsa|ecdsa  - (*=rsa)"
+   local _GRAV_ARG3=" Arg3:  [key-len]: 2048-8192      - (*=4096)"
+   local _GRAV_ARG4=" Arg4: [key-file]: any(*)         - (*=${KEY_DIR}/grav_<grav-keytype>)"
    local _GRAV_INFO=" Info: ${CMD} grav@example.com rsa 4096 ${KEY_DIR}/grav_rsa"
    local _GRAV_HELP=" Help: ${CMD}: Create the required user SSH keys depending from some entered arguments. (See Note, Info and Args)"
 
-   if [ ${_ARGC} -lt 1 ]; then 
-      libgrav_common::usage 1 \
+   # Check if docker is running
+   libgrav_common::check_docker
+
+   # If no arguments given show help otherwise usage
+   if [ ${_ARGV[1]} != "help" ]; then 
+   libgrav_common::usage 1 \
          "${_GRAV_TEXT}" \
          "${_GRAV_ARGS}" \
          "${_GRAV_NOTE}" \
@@ -70,8 +74,23 @@ function main() {
          "${_GRAV_ARG4}"
    fi
 
-   # Check if docker is running
-   libgrav_common::check_docker
+case "${_GRAV_EMAIL}" in
+      "help")
+      libgrav_common::usage 1 \
+         " Help: This arguments are currently valid!" \
+         "${_GRAV_ARGS}" \
+         "${_GRAV_NOTE}" \
+         "${_GRAV_INFO}" \
+         "${_GRAV_HELP}" \
+         "${_GRAV_ARG1}" \
+         "${_GRAV_ARG2}" \
+         "${_GRAV_ARG3}" \
+         "${_GRAV_ARG4}"
+      ;;
+
+      *)
+      ;;
+   esac
 
    libgrav_mk::mk_ssh \
       "${_GRAV_EMAIL}" \
@@ -93,7 +112,7 @@ function main() {
 # #### #
 # MAIN #
 # #### #
-main ${ARGC} "${ARGV[@]:-""}"
+main ${ARGC} "${ARGV[@]:-"help"}"
 
 RC=$?
 

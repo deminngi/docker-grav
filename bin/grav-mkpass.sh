@@ -42,19 +42,21 @@ function main() {
    
    local _RC=0
 
-   local _GRAV_SECS="${_ARGV[1]-""}"
-   local _GRAV_USER="${_ARGV[2]:-$(id -un)}"
-   local _GRAV_PASS="${_ARGV[3]:-"${KEY_DIR}/grav_pass.key"}"
+   local _GRAV_CMD="${_ARGV[1]-""}"
+   local _GRAV_SECS="${_ARGV[2]-""}"
+   local _GRAV_USER="${_ARGV[3]:-$(id -un)}"
+   local _GRAV_PASS="${_ARGV[4]:-"${KEY_DIR}/grav_pass.key"}"
 
    local _GRAV_LEN=11
 
    local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
    local _GRAV_ARGS=" Args: ${CMD} mkpass-cmd [user-name] [pass-file]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1:  mkpass-cmd: user-pass - (#=minimum length: 11 chars) or (*=help)"
-   local _GRAV_ARG2=" Arg2: [user-name]: any(*)    - (*=<current-user>,#=grav)"
-   local _GRAV_ARG3=" Arg3: [pass-file]: any(*)    - (*=${KEY_DIR}/grav_pass.key]"
-   local _GRAV_INFO=" Info: ${CMD} my-secret-pass grav ${KEY_DIR}/grav_pass.key"
+   local _GRAV_ARG1=" Arg1:  mkpass-cmd: make|help - (*=help)"
+   local _GRAV_ARG2=" Arg2:   user-pass: any       - (#=minimum length: 11 chars)"
+   local _GRAV_ARG3=" Arg3: [user-name]: any(*)    - (*=<current-user>,#=grav)"
+   local _GRAV_ARG4=" Arg4: [pass-file]: any(*)    - (*=${KEY_DIR}/grav_pass.key]"
+   local _GRAV_INFO=" Info: ${CMD} make my-secret-pass grav ${KEY_DIR}/grav_pass.key"
    local _GRAV_HELP=" Help: ${CMD}: Create the required user password depending from some entered arguments. (See Note, Info and Args)"
 
    # Check if docker is running
@@ -70,10 +72,18 @@ function main() {
          "${_GRAV_HELP}" \
          "${_GRAV_ARG1}" \
          "${_GRAV_ARG2}" \
-         "${_GRAV_ARG3}"
+         "${_GRAV_ARG3}" \
+         "${_GRAV_ARG4}"
    fi
 
-   case "${_GRAV_SECS}" in
+   case "${_GRAV_CMD}" in
+      "make")
+         libgrav_mk::mk_pass \
+            "${_GRAV_SECS}" \
+            "${_GRAV_USER}" \
+            "${_GRAV_PASS}"
+      ;;
+
       "help")
          libgrav_common::usage 1 \
             " Help: This arguments are currently valid!" \
@@ -83,7 +93,8 @@ function main() {
             "${_GRAV_HELP}" \
             "${_GRAV_ARG1}" \
             "${_GRAV_ARG2}" \
-            "${_GRAV_ARG3}"
+            "${_GRAV_ARG3}" \
+            "${_GRAV_ARG4}"
       ;;
 
       *)
@@ -95,16 +106,12 @@ function main() {
             "${_GRAV_HELP}" \
             "${_GRAV_ARG1}" \
             "${_GRAV_ARG2}" \
-            "${_GRAV_ARG3}"
+            "${_GRAV_ARG3}" \
+            "${_GRAV_ARG4}"
       ;;
    esac
 
    if [ ${#_GRAV_SECS} -lt ${_GRAV_LEN} ]; then libgrav_common::error 2 "Error: Password must contain at least ${_GRAV_LEN} chars!" "${NAME}"; fi
-
-   libgrav_mk::mk_pass \
-      "${_GRAV_SECS}" \
-      "${_GRAV_USER}" \
-      "${_GRAV_PASS}"
 
    RC=$?
 

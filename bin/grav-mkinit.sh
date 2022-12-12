@@ -45,12 +45,14 @@ function main() {
    local _RC=0
 
    local _GRAV_CMD="${_ARGV[1]-""}"
+   local _GRAV_STAGE="${_ARGV[2]-""}"
 
    local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
-   local _GRAV_ARGS=" Args: ${CMD} mkinit-cmd"
+   local _GRAV_ARGS=" Args: ${CMD} mkinit-cmd init-name"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1: mkinit-cmd: init - (#=init) or (*=help)"
-   local _GRAV_INFO=" Info: ${CMD} init"
+   local _GRAV_ARG1=" Arg1: mkinit-cmd: make|help - (*=help)"
+   local _GRAV_ARG2=" Arg2:  init-name: any       - (#=init)"
+   local _GRAV_INFO=" Info: ${CMD} make init"
    local _GRAV_HELP=" Help: ${CMD}: Use the 'init' command to initialize the project environment with context files under the ${CFG_DIR} directory. (See Note, Info and Args)"
 
    # Prerequisite checking
@@ -74,10 +76,24 @@ function main() {
          "${_GRAV_NOTE}" \
          "${_GRAV_INFO}" \
          "${_GRAV_HELP}" \
-         "${_GRAV_ARG1}"
+         "${_GRAV_ARG1}" \
+         "${_GRAV_ARG2}"
    fi
    
    case "${_GRAV_CMD}" in
+      "make")
+         libgrav_init::mk_init \
+            "${_GRAV_STAGE}" \
+            "${_UUID_MIN}" \
+            "${_DOCKER_MIN}" \
+            "${_BUILDX_MIN}" \
+            "${_JQ_MIN}" \
+            "${_OPENSSL_MIN}" \
+            "${_GIT_MIN}" \
+            "${_GETSSL_MIN}" \
+            "${_WGET_MIN}"
+      ;;
+
       "help")
          libgrav_common::usage 1 \
             " Help: This arguments are currently valid!" \
@@ -85,7 +101,8 @@ function main() {
             "${_GRAV_NOTE}" \
             "${_GRAV_INFO}" \
             "${_GRAV_HELP}" \
-            "${_GRAV_ARG1}"
+            "${_GRAV_ARG1}" \
+            "${_GRAV_ARG2}"
       ;;
 
       *)
@@ -95,20 +112,10 @@ function main() {
             "${_GRAV_NOTE}" \
             "${_GRAV_INFO}" \
             "${_GRAV_HELP}" \
-            "${_GRAV_ARG1}"
+            "${_GRAV_ARG1}" \
+            "${_GRAV_ARG2}"
       ;;
    esac
-
-   libgrav_init::mk_init \
-      "${_GRAV_CMD}" \
-      "${_UUID_MIN}" \
-      "${_DOCKER_MIN}" \
-      "${_BUILDX_MIN}" \
-      "${_JQ_MIN}" \
-      "${_OPENSSL_MIN}" \
-      "${_GIT_MIN}" \
-      "${_GETSSL_MIN}" \
-      "${_WGET_MIN}"
 
    _RC=$?
    

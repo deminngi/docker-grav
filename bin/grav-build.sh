@@ -47,12 +47,13 @@ function main() {
    local _GRAV_PROD=""
 
    # Enter latest or testing
-   local _GRAV_USER="${_ARGV[1]-""}"
-   local _GRAV_NAME="${_ARGV[2]:-"grav-admin"}"
-   local _GRAV_TAG="${_ARGV[3]:-"latest"}"
-   local _GRAV_PASS="${_ARGV[4]:-"${KEY_DIR}/grav_pass.key"}"
-   local _GRAV_PRIV="${_ARGV[5]:-"${KEY_DIR}/grav_rsa"}"
-   local _GRAV_PUB="${_ARGV[6]:-"${KEY_DIR}/grav_rsa.pub"}"
+   local _GRAV_CMD="${_ARGV[1]-""}"
+   local _GRAV_USER="${_ARGV[2]-""}"
+   local _GRAV_NAME="${_ARGV[3]:-"grav-admin"}"
+   local _GRAV_TAG="${_ARGV[4]:-"latest"}"
+   local _GRAV_PASS="${_ARGV[5]:-"${KEY_DIR}/grav_pass.key"}"
+   local _GRAV_PRIV="${_ARGV[6]:-"${KEY_DIR}/grav_rsa"}"
+   local _GRAV_PUB="${_ARGV[7]:-"${KEY_DIR}/grav_rsa.pub"}"
    local _GRAV_OS="$(libgrav_common::os_type)"
    local _GRAV_ARCH="$(libgrav_common::machine_arch)"
    local _GRAV_FILE="Dockerfile"
@@ -61,15 +62,16 @@ function main() {
    local _GRAV_URL="https://getgrav.org/download/${_GRAV_KIND}/${_GRAV_NAME}"
 
    local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
-   local _GRAV_ARGS=" Args: ${CMD} build-cmd [img-name] [tag-name] [pass-file] [priv-file] [pub-file]"
+   local _GRAV_ARGS=" Args: ${CMD} build-cmd user-name [img-name] [tag-name] [pass-file] [priv-file] [pub-file]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1:   build-cmd: user-name       - (#=grav) or (*=help)"
-   local _GRAV_ARG2=" Arg2:  [img-name]: grav|grav-admin - (*=grav)"
-   local _GRAV_ARG3=" Arg3:  [tag-name]: latest|testing  - (*=latest)"
-   local _GRAV_ARG4=" Arg4: [pass-file]: any(*)          - (*=<PROJECT_HOME>/key/grav_pass.key)"
-   local _GRAV_ARG5=" Arg5: [priv-file]: any(*)          - (*=<PROJECT_HOME>/key/grav_rsa)"
-   local _GRAV_ARG6=" Arg6:  [pub-file]: any(*)          - (*=<PROJECT_HOME>/key/grav_rsa.pub)"
-   local _GRAV_INFO=" Info: ${CMD} grav grav latest ${KEY_DIR}/grav_pass.key ${KEY_DIR}/grav_rsa ${KEY_DIR}/grav_rsa.pub"
+   local _GRAV_ARG1=" Arg1:   build-cmd: build|help      - (*=help)"
+   local _GRAV_ARG2=" Arg2:   user-name: any             - (#=grav)"
+   local _GRAV_ARG3=" Arg3:  [img-name]: grav|grav-admin - (*=grav)"
+   local _GRAV_ARG4=" Arg4:  [tag-name]: latest|testing  - (*=latest)"
+   local _GRAV_ARG5=" Arg5: [pass-file]: any(*)          - (*=<PROJECT_HOME>/key/grav_pass.key)"
+   local _GRAV_ARG6=" Arg6: [priv-file]: any(*)          - (*=<PROJECT_HOME>/key/grav_rsa)"
+   local _GRAV_ARG7=" Arg7:  [pub-file]: any(*)          - (*=<PROJECT_HOME>/key/grav_rsa.pub)"
+   local _GRAV_INFO=" Info: ${CMD} build grav grav latest ${KEY_DIR}/grav_pass.key ${KEY_DIR}/grav_rsa ${KEY_DIR}/grav_rsa.pub"
    local _GRAV_HELP=" Help: ${CMD}: Builds the docker file from some entered arguments. (See Note, Info and Args)"
 
    # Check if docker is running
@@ -88,10 +90,49 @@ function main() {
          "${_GRAV_ARG3}" \
          "${_GRAV_ARG4}" \
          "${_GRAV_ARG5}" \
-         "${_GRAV_ARG6}"
+         "${_GRAV_ARG6}" \
+         "${_GRAV_ARG7}"
    fi
 
-   case "${_GRAV_USER}" in
+   case "${_GRAV_CMD}" in
+      "build")
+         # Check if essential configuration settings are done
+         if [[ ! -f "${CFG_DIR}"/.config.pass ]] || [[ ! -f $(cat "${CFG_DIR}"/.config.pass | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: User and password not provided.\nPlease run ${BIN_DIR}/grav-mkpass.sh first..." "${NAME}";
+            elif [[ ! -f "${CFG_DIR}"/.config.ssh ]] || [[ ! -f $(cat "${CFG_DIR}"/.config.ssh | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: SSH files not provided.\nPlease run ${BIN_DIR}/grav-mkssh.sh first..." "${NAME}";
+            elif [[ ! -f "${CFG_DIR}"/.config.cache ]] || [[ ! -d $(cat "${CFG_DIR}"/.config.cache | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: Cache directory not provided.\nPlease run ${BIN_DIR}/grav-mkcache.sh first..." "${NAME}";
+         fi
+
+         # Define URLs using the predefined version string from above
+         # Check if version string is set for development
+         if [ "${_GRAV_TAG}" == "testing" ]; then
+            if [[ ! -z "$(cat ${CFG_DIR}/.config.dev)" ]]; then _GRAV_DEV="$(cat ${CFG_DIR}/.config.dev | tr -d '"' | cut -d'=' -f2)"; fi
+            if [[ ! -f "${CFG_DIR}"/.config.dev ]] || [[ ! -n $(cat "${CFG_DIR}"/.config.dev | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: Grav dev version not provided!\nPlease run ${BIN_DIR}/grav-core.sh set first..." "${NAME}"; fi
+
+            _GRAV_URLFILE="${_GRAV_NAME}-${_GRAV_DEV}?${_GRAV_TAG}.zip"
+            _GRAV_URL="${_GRAV_URL}"/"${_GRAV_DEV}"?"${_GRAV_TAG}"
+         elif [ "${_GRAV_TAG}" == "latest" ]; then
+            if [[ ! -z "$(cat ${CFG_DIR}/.config.prod)" ]]; then _GRAV_PROD="$(cat ${CFG_DIR}/.config.prod | tr -d '"' | cut -d'=' -f2)"; fi
+            if [[ ! -f "${CFG_DIR}"/.config.prod ]] || [[ ! -n $(cat "${CFG_DIR}"/.config.prod | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: Grav prod version not provided!\nPlease run ${BIN_DIR}/grav-core.sh set first..." "${NAME}"; fi
+
+            _GRAV_URLFILE="${_GRAV_NAME}-${_GRAV_PROD}.zip"
+            _GRAV_URL="${_GRAV_URL}"/"${_GRAV_PROD}"
+         fi
+
+         libgrav_docker::build \
+            "${_GRAV_USER}" \
+            "${_GRAV_NAME}" \
+            "${_GRAV_TAG}" \
+            "${_GRAV_PASS}" \
+            "${_GRAV_PRIV}" \
+            "${_GRAV_PUB}" \
+            "${_GRAV_OS}" \
+            "${_GRAV_ARCH}" \
+            "${_GRAV_FILE}" \
+            "${_GRAV_KIND}" \
+            "${_GRAV_URLFILE}" \
+            "${_GRAV_URL}"
+      ;;
+
       "help")
          libgrav_common::usage 1 \
             " Help: This arguments are currently valid!" \
@@ -104,7 +145,8 @@ function main() {
             "${_GRAV_ARG3}" \
             "${_GRAV_ARG4}" \
             "${_GRAV_ARG5}" \
-            "${_GRAV_ARG6}"
+            "${_GRAV_ARG6}" \
+            "${_GRAV_ARG7}"
       ;;
 
       *)
@@ -119,45 +161,10 @@ function main() {
             "${_GRAV_ARG3}" \
             "${_GRAV_ARG4}" \
             "${_GRAV_ARG5}" \
-            "${_GRAV_ARG6}"
+            "${_GRAV_ARG6}" \
+            "${_GRAV_ARG7}"
       ;;
    esac
-
-   # Check if essential configuration settings are done
-   if [[ ! -f "${CFG_DIR}"/.config.pass ]] || [[ ! -f $(cat "${CFG_DIR}"/.config.pass | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: User and password not provided.\nPlease run ${BIN_DIR}/grav-mkpass.sh first..." "${NAME}";
-      elif [[ ! -f "${CFG_DIR}"/.config.ssh ]] || [[ ! -f $(cat "${CFG_DIR}"/.config.ssh | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: SSH files not provided.\nPlease run ${BIN_DIR}/grav-mkssh.sh first..." "${NAME}";
-      elif [[ ! -f "${CFG_DIR}"/.config.cache ]] || [[ ! -d $(cat "${CFG_DIR}"/.config.cache | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: Cache directory not provided.\nPlease run ${BIN_DIR}/grav-mkcache.sh first..." "${NAME}";
-   fi
-
-   # Define URLs using the predefined version string from above
-   # Check if version string is set for development
-   if [ "${_GRAV_TAG}" == "testing" ]; then
-      if [[ ! -z "$(cat ${CFG_DIR}/.config.dev)" ]]; then _GRAV_DEV="$(cat ${CFG_DIR}/.config.dev | tr -d '"' | cut -d'=' -f2)"; fi
-      if [[ ! -f "${CFG_DIR}"/.config.dev ]] || [[ ! -n $(cat "${CFG_DIR}"/.config.dev | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: Grav dev version not provided!\nPlease run ${BIN_DIR}/grav-core.sh set first..." "${NAME}"; fi
-
-      _GRAV_URLFILE="${_GRAV_NAME}-${_GRAV_DEV}?${_GRAV_TAG}.zip"
-      _GRAV_URL="${_GRAV_URL}"/"${_GRAV_DEV}"?"${_GRAV_TAG}"
-   elif [ "${_GRAV_TAG}" == "latest" ]; then
-      if [[ ! -z "$(cat ${CFG_DIR}/.config.prod)" ]]; then _GRAV_PROD="$(cat ${CFG_DIR}/.config.prod | tr -d '"' | cut -d'=' -f2)"; fi
-      if [[ ! -f "${CFG_DIR}"/.config.prod ]] || [[ ! -n $(cat "${CFG_DIR}"/.config.prod | tr -d '"' | cut -d'=' -f2) ]]; then libgrav_common::error 2 "Error: Grav prod version not provided!\nPlease run ${BIN_DIR}/grav-core.sh set first..." "${NAME}"; fi
-
-      _GRAV_URLFILE="${_GRAV_NAME}-${_GRAV_PROD}.zip"
-      _GRAV_URL="${_GRAV_URL}"/"${_GRAV_PROD}"
-   fi
-
-   libgrav_docker::build \
-      "${_GRAV_USER}" \
-      "${_GRAV_NAME}" \
-      "${_GRAV_TAG}" \
-      "${_GRAV_PASS}" \
-      "${_GRAV_PRIV}" \
-      "${_GRAV_PUB}" \
-      "${_GRAV_OS}" \
-      "${_GRAV_ARCH}" \
-      "${_GRAV_FILE}" \
-      "${_GRAV_KIND}" \
-      "${_GRAV_URLFILE}" \
-      "${_GRAV_URL}"
 
    RC=$?
 

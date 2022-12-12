@@ -42,15 +42,17 @@ function main() {
 
    local _RC=0
 
-   local _GRAV_NAME="${_ARGV[1]-""}"
-   local _GRAV_CACHE="${_ARGV[2]:-"${HOME_DIR}/${_GRAV_NAME}"}"
+   local _GRAV_CMD="${_ARGV[1]-""}"
+   local _GRAV_NAME="${_ARGV[2]-""}"
+   local _GRAV_CACHE="${_ARGV[3]:-"${HOME_DIR}/${_GRAV_NAME}"}"
 
    local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
-   local _GRAV_ARGS=" Args: ${CMD} mkcache-cmd [cache-file]"
+   local _GRAV_ARGS=" Args: ${CMD} mkcache-cmd cache-name [cache-file]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1:  mkcache-cmd: cache-name - (#=cache) or (*=help)"
-   local _GRAV_ARG2=" Arg2: [cache-file]: any(*)     - (*=${CACHE_DIR-""})"
-   local _GRAV_INFO=" Info: ${CMD} cache ${CACHE_DIR-""}"
+   local _GRAV_ARG1=" Arg1:  mkcache-cmd: make|help - (*=help)"
+   local _GRAV_ARG2=" Arg2:   cache-name: any       - (#=cache)"
+   local _GRAV_ARG3=" Arg3: [cache-file]: any(*)    - (*=${CACHE_DIR-""})"
+   local _GRAV_INFO=" Info: ${CMD} make cache ${CACHE_DIR-""}"
    local _GRAV_HELP=" Help: ${CMD}: Create the required cache directory depending from some entered arguments. (See Note, Info and Args)"
 
    # Check if docker is running
@@ -59,16 +61,23 @@ function main() {
    # If no arguments given show help otherwise usage
    if [ ${_ARGC} -lt 1 ] && [ ${_ARGV[1]} != "help" ]; then 
       libgrav_common::usage 1 \
-            "${_GRAV_TEXT}" \
-            "${_GRAV_ARGS}" \
-            "${_GRAV_NOTE}" \
-            "${_GRAV_INFO}" \
-            "${_GRAV_HELP}" \
-            "${_GRAV_ARG1}" \
-            "${_GRAV_ARG2}"
+         "${_GRAV_TEXT}" \
+         "${_GRAV_ARGS}" \
+         "${_GRAV_NOTE}" \
+         "${_GRAV_INFO}" \
+         "${_GRAV_HELP}" \
+         "${_GRAV_ARG1}" \
+         "${_GRAV_ARG2}" \
+         "${_GRAV_ARG3}"
    fi
 
-   case "${_GRAV_NAME}" in
+   case "${_GRAV_CMD}" in
+      "make")
+         libgrav_mk::mk_cache \
+            "${_GRAV_NAME}" \
+            "${_GRAV_CACHE}"
+      ;;
+
       "help")
          libgrav_common::usage 1 \
             " Help: This arguments are currently valid!" \
@@ -77,7 +86,8 @@ function main() {
             "${_GRAV_INFO}" \
             "${_GRAV_HELP}" \
             "${_GRAV_ARG1}" \
-            "${_GRAV_ARG2}"
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}"
       ;;
 
       *)
@@ -88,13 +98,10 @@ function main() {
             "${_GRAV_INFO}" \
             "${_GRAV_HELP}" \
             "${_GRAV_ARG1}" \
-            "${_GRAV_ARG2}"
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}"
       ;;
    esac
-
-   libgrav_mk::mk_cache \
-      "${_GRAV_NAME}" \
-      "${_GRAV_CACHE}"
 
    RC=$?
 

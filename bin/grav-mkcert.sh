@@ -42,15 +42,17 @@ function main() {
 
    local _RC=0
 
-   local _GRAV_NAME="${_ARGV[1]-""}"
-   local _GRAV_CERT="${_ARGV[2]:-"${HOME_DIR}/${_GRAV_NAME}"}"
+   local _GRAV_CMD="${_ARGV[1]-""}"
+   local _GRAV_NAME="${_ARGV[2]-""}"
+   local _GRAV_CERT="${_ARGV[3]:-"${HOME_DIR}/${_GRAV_NAME}"}"
 
    local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
-   local _GRAV_ARGS=" Args: ${CMD} mkcert-cmd [vol-cert]"
+   local _GRAV_ARGS=" Args: ${CMD} mkcert-cmd vol-name [vol-cert]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1: mkcert-cmd: vol-name - (#=cert) or (*=help)"
-   local _GRAV_ARG2=" Arg2: [vol-cert]: any(*)   - (*=${CERT_DIR-""})"
-   local _GRAV_INFO=" Info: ${CMD} cert ${CERT_DIR-""}"
+   local _GRAV_ARG1=" Arg1: mkcert-cmd: make|help - (*=help)"
+   local _GRAV_ARG2=" Arg2:   vol-name: any       - (#=cert)"
+   local _GRAV_ARG3=" Arg3: [vol-cert]: any(*)    - (*=${CERT_DIR-""})"
+   local _GRAV_INFO=" Info: ${CMD} make cert ${CERT_DIR-""}"
    local _GRAV_HELP=" Help: ${CMD}: Create the required named certificate volume depending from some entered arguments. (See Note, Info and Args)"
 
    # Check if docker is running
@@ -65,10 +67,17 @@ function main() {
          "${_GRAV_INFO}" \
          "${_GRAV_HELP}" \
          "${_GRAV_ARG1}" \
-         "${_GRAV_ARG2}"
+         "${_GRAV_ARG2}" \
+         "${_GRAV_ARG3}"
    fi
 
-   case "${_GRAV_NAME}" in
+   case "${_GRAV_CMD}" in
+      "make")
+         libgrav_mk::mk_cert \
+            "${_GRAV_NAME}" \
+            "${_GRAV_CERT}"
+      ;;
+
       "help")
          libgrav_common::usage 1 \
             " Help: This arguments are currently valid!" \
@@ -77,7 +86,8 @@ function main() {
             "${_GRAV_INFO}" \
             "${_GRAV_HELP}" \
             "${_GRAV_ARG1}" \
-            "${_GRAV_ARG2}"
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}"
       ;;
 
       *)
@@ -88,13 +98,10 @@ function main() {
             "${_GRAV_INFO}" \
             "${_GRAV_HELP}" \
             "${_GRAV_ARG1}" \
-            "${_GRAV_ARG2}"
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}"
       ;;
    esac
-
-   libgrav_mk::mk_cert \
-      "${_GRAV_NAME}" \
-      "${_GRAV_CERT}"
 
    RC=$?
 

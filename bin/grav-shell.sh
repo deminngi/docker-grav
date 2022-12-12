@@ -46,15 +46,17 @@ function main() {
    
    local _RC=0
 
-   local _GRAV_NAME="${_ARGV[1]:-""}"
-   local _GRAV_SHELL="${_ARGV[2]-"${SHELL}"}"
+   local _GRAV_CMD="${_ARGV[1]-""}"
+   local _GRAV_NAME="${_ARGV[2]:-""}"
+   local _GRAV_SHELL="${_ARGV[3]-"${SHELL}"}"
    
    local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
    local _GRAV_ARGS=" Args: ${CMD} shell-cmd [shell-type]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
-   local _GRAV_ARG1=" Arg1:  shell-cmd: img-name        - (#=grav) or (*=help)"
-   local _GRAV_ARG2=" Arg2: shell-type: (*)|sh|ash|bash - (*=<current-shell>)"
-   local _GRAV_INFO=" Info: ${CMD} grav bash"
+   local _GRAV_ARG1=" Arg1:  shell-cmd: run|help        - (*=help)"
+   local _GRAV_ARG2=" Arg2:   img-name: any             - (#=grav)"
+   local _GRAV_ARG3=" Arg3: shell-type: (*)|sh|ash|bash - (*=<current-shell>)"
+   local _GRAV_INFO=" Info: ${CMD} run grav bash"
    local _GRAV_HELP=" Help: ${CMD}: Open a named shell into the running container depending from some entered arguments. (See Note, Info and Args)"
 
    # Check if docker is running
@@ -69,10 +71,17 @@ function main() {
          "${_GRAV_INFO}" \
          "${_GRAV_HELP}" \
          "${_GRAV_ARG1}" \
-         "${_GRAV_ARG2}"
+         "${_GRAV_ARG2}" \
+         "${_GRAV_ARG3}"
    fi
    
-   case "${_GRAV_NAME}" in
+   case "${_GRAV_CMD}" in
+      "run")
+         libgrav_docker::shell \
+            "${_GRAV_NAME}" \
+            "${_GRAV_SHELL}"
+      ;;
+
       "help")
          libgrav_common::usage 1 \
             " Help: This arguments are currently valid!" \
@@ -81,7 +90,8 @@ function main() {
             "${_GRAV_INFO}" \
             "${_GRAV_HELP}" \
             "${_GRAV_ARG1}" \
-            "${_GRAV_ARG2}"
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}"
       ;;
 
       *)
@@ -92,13 +102,10 @@ function main() {
             "${_GRAV_INFO}" \
             "${_GRAV_HELP}" \
             "${_GRAV_ARG1}" \
-            "${_GRAV_ARG2}"
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}"
       ;;
    esac
-
-   libgrav_docker::shell \
-      "${_GRAV_NAME}" \
-      "${_GRAV_SHELL}"
 
    _RC=$?
 

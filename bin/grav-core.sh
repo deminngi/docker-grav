@@ -93,6 +93,7 @@ function main() {
                libgrav_common::error 2 "Error: Core production package not provided.\nPlease run ${BIN_DIR}/grav-core.sh set first..." "${NAME}"; 
             fi
          fi
+         
          libgrav_core::get_core \
             "${_GRAV_CMD}" \
             "${_GRAV_CORE}" \

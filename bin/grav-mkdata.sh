@@ -45,7 +45,7 @@ function main() {
    local _GRAV_NAME="${_ARGV[1]-""}"
    local _GRAV_DATA="${_ARGV[2]:-"${HOME_DIR}/${_GRAV_NAME}"}"
 
-   local _GRAV_TEXT="Error: Arguments are not provided!"
+   local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
    local _GRAV_ARGS=" Args: ${CMD} mkdata-cmd [vol-data]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
    local _GRAV_ARG1=" Arg1: mkdata-cmd: vol-name - (#=data) or (*=help)"
@@ -70,17 +70,25 @@ function main() {
 
    case "${_GRAV_NAME}" in
       "help")
-      libgrav_common::usage 1 \
-         " Help: This arguments are currently valid!" \
-         "${_GRAV_ARGS}" \
-         "${_GRAV_NOTE}" \
-         "${_GRAV_INFO}" \
-         "${_GRAV_HELP}" \
-         "${_GRAV_ARG1}" \
-         "${_GRAV_ARG2}"
+         libgrav_common::usage 1 \
+            " Help: This arguments are currently valid!" \
+            "${_GRAV_ARGS}" \
+            "${_GRAV_NOTE}" \
+            "${_GRAV_INFO}" \
+            "${_GRAV_HELP}" \
+            "${_GRAV_ARG1}" \
+            "${_GRAV_ARG2}"
       ;;
 
       *)
+         libgrav_common::usage 1 \
+            "${_GRAV_TEXT}" \
+            "${_GRAV_ARGS}" \
+            "${_GRAV_NOTE}" \
+            "${_GRAV_INFO}" \
+            "${_GRAV_HELP}" \
+            "${_GRAV_ARG1}" \
+            "${_GRAV_ARG2}"
       ;;
    esac
 

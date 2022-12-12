@@ -49,7 +49,7 @@ function main() {
    local _GRAV_DATA="${_ARGV[5]:-"grav_data"}"
    local _GRAV_CERT="${_ARGV[6]:-"grav_cert"}"
    
-   local _GRAV_TEXT="Error: Arguments are not provided!"
+   local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
    local _GRAV_ARGS=" Args: ${CMD} run-cmd [img-name] [tag-name] [run-mode] [vol-data] [vol-cert]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
    local _GRAV_ARG1=" Arg1:    run-cmd: user-name - (#=grav) or (*=help)"
@@ -81,7 +81,7 @@ function main() {
    fi
 
    case "${_GRAV_USER}" in
-         "help")
+      "help")
          libgrav_common::usage 1 \
             " Help: This arguments are currently valid!" \
             "${_GRAV_ARGS}" \
@@ -97,6 +97,18 @@ function main() {
       ;;
 
       *)
+         libgrav_common::usage 1 \
+            "${_GRAV_TEXT}" \
+            "${_GRAV_ARGS}" \
+            "${_GRAV_NOTE}" \
+            "${_GRAV_INFO}" \
+            "${_GRAV_HELP}" \
+            "${_GRAV_ARG1}" \
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}" \
+            "${_GRAV_ARG4}" \
+            "${_GRAV_ARG5}" \
+            "${_GRAV_ARG6}"
       ;;
    esac
 

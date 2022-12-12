@@ -60,7 +60,7 @@ function main() {
    local _GRAV_URLFILE="${_GRAV_NAME}-${_GRAV_TAG}.zip"
    local _GRAV_URL="https://getgrav.org/download/${_GRAV_KIND}/${_GRAV_NAME}"
 
-   local _GRAV_TEXT="Error: Arguments are not provided!"
+   local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
    local _GRAV_ARGS=" Args: ${CMD} build-cmd [img-name] [tag-name] [pass-file] [priv-file] [pub-file]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
    local _GRAV_ARG1=" Arg1:   build-cmd: user-name       - (#=grav) or (*=help)"
@@ -76,8 +76,8 @@ function main() {
    libgrav_common::check_docker
 
    # If no arguments given show help otherwise usage
-      if [ ${_ARGC} -lt 1 ] && [ ${_ARGV[1]} != "help" ]; then 
-   libgrav_common::usage 1 \
+   if [ ${_ARGC} -lt 1 ] && [ ${_ARGV[1]} != "help" ]; then 
+      libgrav_common::usage 1 \
          "${_GRAV_TEXT}" \
          "${_GRAV_ARGS}" \
          "${_GRAV_NOTE}" \
@@ -92,7 +92,7 @@ function main() {
    fi
 
    case "${_GRAV_USER}" in
-         "help")
+      "help")
          libgrav_common::usage 1 \
             " Help: This arguments are currently valid!" \
             "${_GRAV_ARGS}" \
@@ -108,6 +108,18 @@ function main() {
       ;;
 
       *)
+         libgrav_common::usage 1 \
+            "${_GRAV_TEXT}" \
+            "${_GRAV_ARGS}" \
+            "${_GRAV_NOTE}" \
+            "${_GRAV_INFO}" \
+            "${_GRAV_HELP}" \
+            "${_GRAV_ARG1}" \
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}" \
+            "${_GRAV_ARG4}" \
+            "${_GRAV_ARG5}" \
+            "${_GRAV_ARG6}"
       ;;
    esac
 

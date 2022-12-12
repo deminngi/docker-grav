@@ -48,7 +48,7 @@ function main() {
 
    local _GRAV_LEN=11
 
-   local _GRAV_TEXT="Error: Arguments are not provided!"
+   local _GRAV_TEXT="Error: Arguments are not provided or are wrong!"
    local _GRAV_ARGS=" Args: ${CMD} mkpass-cmd [user-name] [pass-file]"
    local _GRAV_NOTE=" Note: (*) are default values, (#) are recommended values"
    local _GRAV_ARG1=" Arg1:  mkpass-cmd: user-pass - (#=minimum length: 11 chars) or (*=help)"
@@ -75,18 +75,27 @@ function main() {
 
    case "${_GRAV_SECS}" in
       "help")
-      libgrav_common::usage 1 \
-         " Help: This arguments are currently valid!" \
-         "${_GRAV_ARGS}" \
-         "${_GRAV_NOTE}" \
-         "${_GRAV_INFO}" \
-         "${_GRAV_HELP}" \
-         "${_GRAV_ARG1}" \
-         "${_GRAV_ARG2}" \
-         "${_GRAV_ARG3}"
+         libgrav_common::usage 1 \
+            " Help: This arguments are currently valid!" \
+            "${_GRAV_ARGS}" \
+            "${_GRAV_NOTE}" \
+            "${_GRAV_INFO}" \
+            "${_GRAV_HELP}" \
+            "${_GRAV_ARG1}" \
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}"
       ;;
 
       *)
+         libgrav_common::usage 1 \
+            "${_GRAV_TEXT}" \
+            "${_GRAV_ARGS}" \
+            "${_GRAV_NOTE}" \
+            "${_GRAV_INFO}" \
+            "${_GRAV_HELP}" \
+            "${_GRAV_ARG1}" \
+            "${_GRAV_ARG2}" \
+            "${_GRAV_ARG3}"
       ;;
    esac
 
